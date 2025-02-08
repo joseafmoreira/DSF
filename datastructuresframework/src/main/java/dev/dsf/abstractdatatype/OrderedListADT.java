@@ -36,4 +36,22 @@ public interface OrderedListADT<T> extends ListADT<T> {
      * @throws ClassCastException   if the element isn't comparable
      */
     void add(T element);
+
+    /**
+     * Adds all the elements in a specified collection to this ordered list at the
+     * proper location.
+     * 
+     * @param collection the element to be added to the rear of this unordered list
+     * @throws NullPointerException if the specified collection is null or the
+     *                              specified element is null and this list does not
+     *                              allow null elements
+     * @throws ClassCastException   if the elements in the specified collection
+     *                              aren't comparable
+     */
+    default void addAll(IterableCollectionADT<T> collection) {
+        if (collection == null)
+            throw new NullPointerException("Collection is null");
+        for (T element : this)
+            add(element);
+    }
 }

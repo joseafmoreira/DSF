@@ -159,8 +159,7 @@ public interface ListADT<T> extends IterableCollectionADT<T> {
      * Removes a specified target from this list.
      * 
      * @param target the target to remove
-     * @return {@code true} if this list contained the specified target,
-     *         {@code false} otherwise
+     * @return {@code true} if this list contained the specified target
      * @throws EmptyCollectionException if this list is empty
      * @throws NullPointerException     if the specified target is null and
      *                                  this list does not allow null elements
@@ -173,5 +172,27 @@ public interface ListADT<T> extends IterableCollectionADT<T> {
             return false;
         remove(index);
         return true;
+    }
+
+    /**
+     * Removes all the elements present in a specified collection from this list.
+     * 
+     * @param collection the specified collection
+     * @return {@code true} if all the elements from the specified collection are
+     *         removed from this list
+     * @throws EmptyCollectionException if this list is empty
+     * @throws NullPointerException     if the specified target is null and
+     *                                  this list does not allow null elements
+     */
+    default boolean removeAll(IterableCollectionADT<T> collection) {
+        if (isEmpty())
+            throw new EmptyCollectionException("List is empty");
+        if (collection == null)
+            throw new NullPointerException("Collection is null");
+        boolean removedAll = true;
+        for (T element : this)
+            if (!remove(element))
+                removedAll = false;
+        return removedAll;
     }
 }

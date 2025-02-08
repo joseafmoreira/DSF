@@ -12,6 +12,8 @@ import java.util.Iterator;
  * <ul>
  * <li>{@link #contains(Object)}: Returns true if this collection contains the
  * specified target</li>
+ * <li>{@link #containsAll(IterableCollectionADT)}: Returns {@code true} if this
+ * collection contains all the elements from a specified collection</li>
  * <li>{@link #toArray()}: Returns an array containing all of the elements in
  * this collection</li>
  * <li>{@link #iterator()}: Returns an iterator over the elements in this
@@ -36,6 +38,24 @@ public interface IterableCollectionADT<T> extends CollectionADT, Iterable<T> {
      * @return {@code true} if this collection contains the specified target
      */
     boolean contains(T target);
+
+    /**
+     * Returns {@code true} if this collection contains all the elements from a
+     * specified collection.
+     * 
+     * @param collection the specified collection
+     * @return {@code true} if this collection contains all the elements from a
+     *         specified collection
+     * @throws NullPointerException if the specified collection is null
+     */
+    default boolean containsAll(IterableCollectionADT<T> collection) {
+        if (collection == null)
+            throw new NullPointerException("Collection is null");
+        for (T element : this)
+            if (!contains(element))
+                return false;
+        return true;
+    }
 
     /**
      * Returns an array containing all of the elements in this collection.

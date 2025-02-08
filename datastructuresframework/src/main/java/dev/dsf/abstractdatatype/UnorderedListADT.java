@@ -60,7 +60,7 @@ public interface UnorderedListADT<T> extends ListADT<T> {
      * Adds an element to the rear of this unordered list.
      * 
      * @param element the element to be added to the rear of this unordered list
-     * @throws NoSuchElementException if the specified element is null and
+     * @throws NullPointerException if the specified element is null and
      *                                this list does not allow null elements
      */
     default void addLast(T element) {
@@ -101,5 +101,18 @@ public interface UnorderedListADT<T> extends ListADT<T> {
         if (index == -1)
             throw new IllegalArgumentException("Target not found in the list");
         add(index + 1, element);
+    }
+
+    /**
+     * Adds all the elements in a specified collection to the rear of this unordered list.
+     * 
+     * @param collection the specified collection
+     * @throws NullPointerException if the specified collection is null
+     */
+    default void addAll(IterableCollectionADT<T> collection) {
+        if (collection == null)
+            throw new NullPointerException("Collection is null");
+        for (T element : this)
+            addLast(element);
     }
 }
