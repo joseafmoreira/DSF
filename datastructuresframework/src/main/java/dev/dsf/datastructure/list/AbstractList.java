@@ -17,6 +17,9 @@ import dev.dsf.datastructure.collection.AbstractIterableCollection;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
+ * @see ArrayList
+ * @see LinkedList
+ * @see DoubleLinkedList
  */
 public abstract class AbstractList<T> extends AbstractIterableCollection<T> implements ListADT<T> {
     /**

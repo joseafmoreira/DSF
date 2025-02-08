@@ -6,6 +6,8 @@ import java.util.Iterator;
 import dev.dsf.abstractdatatype.ListADT;
 import dev.dsf.algorithm.search.LinearSearch;
 import dev.dsf.algorithm.sort.MergeSort;
+import dev.dsf.datastructure.list.ordered.OrderedDoubleLinkedList;
+import dev.dsf.datastructure.list.unordered.UnorderedDoubleLinkedList;
 import dev.dsf.exception.EmptyCollectionException;
 import dev.dsf.node.DoubleLinearNode;
 
@@ -18,6 +20,8 @@ import dev.dsf.node.DoubleLinearNode;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
+ * @see OrderedDoubleLinkedList
+ * @see UnorderedDoubleLinkedList
  */
 public abstract class DoubleLinkedList<T> extends AbstractList<T> {
     /**

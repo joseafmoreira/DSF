@@ -6,6 +6,8 @@ import java.util.Iterator;
 import dev.dsf.abstractdatatype.ListADT;
 import dev.dsf.algorithm.search.LinearSearch;
 import dev.dsf.algorithm.sort.MergeSort;
+import dev.dsf.datastructure.list.ordered.OrderedLinkedList;
+import dev.dsf.datastructure.list.unordered.UnorderedLinkedList;
 import dev.dsf.exception.EmptyCollectionException;
 import dev.dsf.node.LinearNode;
 
@@ -18,6 +20,8 @@ import dev.dsf.node.LinearNode;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
+ * @see OrderedLinkedList
+ * @see UnorderedLinkedList
  */
 public abstract class LinkedList<T> extends AbstractList<T> {
     /**
