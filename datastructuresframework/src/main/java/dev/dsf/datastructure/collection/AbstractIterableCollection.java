@@ -20,7 +20,7 @@ import dev.dsf.abstractdatatype.IterableCollectionADT;
  */
 public abstract class AbstractIterableCollection<T> extends AbstractCollection implements IterableCollectionADT<T> {
     /**
-     * Constructor for use by subclasses.
+     * Constructs an empty collection.
      */
     protected AbstractIterableCollection() {
         super();

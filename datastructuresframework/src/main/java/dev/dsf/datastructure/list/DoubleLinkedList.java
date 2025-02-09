@@ -35,7 +35,7 @@ public abstract class DoubleLinkedList<T> extends AbstractList<T> {
     /**
      * Constructs an empty double linked list.
      */
-    public DoubleLinkedList() {
+    protected DoubleLinkedList() {
         super();
         head = null;
         tail = null;

@@ -3,8 +3,7 @@ package dev.dsf.datastructure.queue;
 import dev.dsf.datastructure.list.unordered.UnorderedLinkedList;
 
 /**
- * Singly-linked list implementation of the {@code QueueADT} interface
- * using the {@code AbstractQueue} abstract class as a base code.
+ * Singly-linked list implementation of the {@code QueueADT} interface.
  * 
  * <h3>LinkedQueue</h3>
  * 

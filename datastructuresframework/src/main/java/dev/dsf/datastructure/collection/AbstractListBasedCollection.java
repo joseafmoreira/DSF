@@ -26,9 +26,11 @@ public abstract class AbstractListBasedCollection<T> implements CollectionADT {
     protected UnorderedListADT<T> list;
 
     /**
-     * Constructor for use by subclasses.
+     * Constructs an empty collection.
      */
-    protected AbstractListBasedCollection() {}
+    protected AbstractListBasedCollection() {
+        super();
+    }
 
     /**
      * {@inheritDoc}

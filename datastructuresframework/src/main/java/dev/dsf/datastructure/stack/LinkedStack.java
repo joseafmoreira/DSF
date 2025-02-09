@@ -3,8 +3,7 @@ package dev.dsf.datastructure.stack;
 import dev.dsf.datastructure.list.unordered.UnorderedLinkedList;
 
 /**
- * Singly-linked list implementation of the {@code StackADT} interface 
- * using the {@code AbstractStack} abstract class as a base code.
+ * Singly-linked list implementation of the {@code StackADT} interface.
  * 
  * <h3>LinkedStack</h3>
  * 

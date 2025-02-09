@@ -8,9 +8,6 @@ import dev.dsf.exception.EmptyCollectionException;
  * This class provides a skeletal implementation of the {@code StackADT}
  * interface, to minimize the effort required to implement this interface.
  * <p>
- * It uses the {@code AbstractListBasedCollection} abstract class as a base
- * code.
- * <p>
  * 
  * <h3>AbstractStack</h3>
  * 
@@ -23,9 +20,10 @@ import dev.dsf.exception.EmptyCollectionException;
  */
 public abstract class AbstractStack<T> extends AbstractListBasedCollection<T> implements StackADT<T> {
     /**
-     * Constructor for use by subclasses.
+     * Constructs an empty stack.
      */
     protected AbstractStack() {
+        super();
     }
 
     /**

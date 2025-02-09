@@ -25,7 +25,7 @@ public abstract class AbstractCollection implements CollectionADT {
     protected int size;
 
     /**
-     * Constructor for use by subclasses.
+     * Constructs an empty collection.
      */
     protected AbstractCollection() {
         size = 0;

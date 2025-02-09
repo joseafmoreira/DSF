@@ -35,7 +35,7 @@ public abstract class LinkedList<T> extends AbstractList<T> {
     /**
      * Constructs an empty linked list.
      */
-    public LinkedList() {
+    protected LinkedList() {
         super();
         head = null;
         tail = null;
