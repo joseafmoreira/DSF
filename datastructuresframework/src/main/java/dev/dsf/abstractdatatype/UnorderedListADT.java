@@ -48,9 +48,9 @@ public interface UnorderedListADT<T> extends ListADT<T> {
     void add(int index, T element);
 
     /**
-     * Adds an element to the front of this unordered list.
+     * Adds an element to the front of this list.
      * 
-     * @param element the element to be added to the front of this unordered list
+     * @param element the element to be added to the front of this list
      * @throws NullPointerException if the specified element is null and
      *                              this list does not allow null elements
      */
@@ -59,18 +59,18 @@ public interface UnorderedListADT<T> extends ListADT<T> {
     }
 
     /**
-     * Adds an element to the rear of this unordered list.
+     * Adds an element to the rear of this list.
      * 
-     * @param element the element to be added to the rear of this unordered list
+     * @param element the element to be added to the rear of this list
      * @throws NullPointerException if the specified element is null and
-     *                                this list does not allow null elements
+     *                              this list does not allow null elements
      */
     default void addLast(T element) {
         add(size(), element);
     }
 
     /**
-     * Adds an element before a specified target in this unordered list.
+     * Adds an element before a specified target in this list.
      * 
      * @param element the element to be added after the target
      * @param target  the target to search
@@ -88,7 +88,7 @@ public interface UnorderedListADT<T> extends ListADT<T> {
     }
 
     /**
-     * Adds an element after a specified target in this unordered list.
+     * Adds an element after a specified target in this list.
      * 
      * @param element the element to be added after the target
      * @param target  the target to search
@@ -106,7 +106,7 @@ public interface UnorderedListADT<T> extends ListADT<T> {
     }
 
     /**
-     * Adds all the elements in a specified collection to the rear of this unordered list.
+     * Adds all the elements in a specified collection to the rear of this list.
      * 
      * @param collection the specified collection
      * @throws NullPointerException if the specified collection is null
@@ -128,8 +128,8 @@ public interface UnorderedListADT<T> extends ListADT<T> {
      * @throws EmptyCollectionException  if this list is empty
      * @throws IndexOutOfBoundsException if the index is out of range
      *                                   ({@code index < 0 || index >= size()})
-     * @throws NullPointerException      if the specified element is null and
-     *                                   this list does not allow null elements
+     * @throws NullPointerException      if the specified element is null and this
+     *                                   list does not allow null elements
      */
     T set(int index, T element);
 
@@ -138,7 +138,8 @@ public interface UnorderedListADT<T> extends ListADT<T> {
      * <p>
      * The list must contain elements that implement the Comparable interface.
      * 
-     * @throws ClassCastException if the elements in this list aren't comparable
+     * @throws ClassCastException if the elements in this unordered list aren't
+     *                            comparable
      */
     void sort();
 }

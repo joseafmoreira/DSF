@@ -28,7 +28,7 @@ package dev.dsf.abstractdatatype;
  */
 public interface OrderedListADT<T> extends ListADT<T> {
     /**
-     * Adds an element to this oridered list at the proper location.
+     * Adds an element to this list at the proper location.
      * 
      * @param element the element to be added
      * @throws NullPointerException if the specified element is null and
@@ -38,10 +38,10 @@ public interface OrderedListADT<T> extends ListADT<T> {
     void add(T element);
 
     /**
-     * Adds all the elements in a specified collection to this ordered list at the
+     * Adds all the elements in a specified collection to this list at the
      * proper location.
      * 
-     * @param collection the element to be added to the rear of this unordered list
+     * @param collection the specified collection
      * @throws NullPointerException if the specified collection is null or the
      *                              specified element is null and this list does not
      *                              allow null elements
