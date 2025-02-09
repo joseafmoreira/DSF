@@ -5,7 +5,6 @@ import java.util.Iterator;
 
 import dev.dsf.abstractdatatype.ListADT;
 import dev.dsf.algorithm.search.LinearSearch;
-import dev.dsf.algorithm.sort.MergeSort;
 import dev.dsf.datastructure.list.ordered.OrderedDoubleLinkedList;
 import dev.dsf.datastructure.list.unordered.UnorderedDoubleLinkedList;
 import dev.dsf.exception.EmptyCollectionException;
@@ -59,22 +58,6 @@ public abstract class DoubleLinkedList<T> extends AbstractList<T> {
         for (int i = 0; i <= index; i++)
             element = it.next();
         return element;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @throws ClassCastException {@inheritDoc}
-     */
-    @Override
-    public void sort() {
-        T[] array = MergeSort.sort(this);
-        int i = 0;
-        DoubleLinearNode<T> currentNode = head;
-        while (currentNode != null) {
-            currentNode.setElement(array[i++]);
-            currentNode = currentNode.getNext();
-        }
     }
 
     /**

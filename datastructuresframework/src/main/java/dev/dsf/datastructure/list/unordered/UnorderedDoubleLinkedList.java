@@ -1,6 +1,7 @@
 package dev.dsf.datastructure.list.unordered;
 
 import dev.dsf.abstractdatatype.UnorderedListADT;
+import dev.dsf.algorithm.sort.MergeSort;
 import dev.dsf.datastructure.list.DoubleLinkedList;
 import dev.dsf.exception.EmptyCollectionException;
 import dev.dsf.node.DoubleLinearNode;
@@ -75,5 +76,21 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
         T result = currentNode.getElement();
         currentNode.setElement(element);
         return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @throws ClassCastException {@inheritDoc}
+     */
+    @Override
+    public void sort() {
+        T[] array = MergeSort.sort(this);
+        int i = 0;
+        DoubleLinearNode<T> currentNode = head;
+        while (currentNode != null) {
+            currentNode.setElement(array[i++]);
+            currentNode = currentNode.getNext();
+        }
     }
 }

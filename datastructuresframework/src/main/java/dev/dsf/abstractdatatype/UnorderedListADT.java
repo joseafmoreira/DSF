@@ -132,4 +132,13 @@ public interface UnorderedListADT<T> extends ListADT<T> {
      *                                   this list does not allow null elements
      */
     T set(int index, T element);
+
+    /**
+     * Sorts the elements in the list according to their natural ordering.
+     * <p>
+     * The list must contain elements that implement the Comparable interface.
+     * 
+     * @throws ClassCastException if the elements in this list aren't comparable
+     */
+    void sort();
 }

@@ -88,15 +88,6 @@ public interface ListADT<T> extends IterableCollectionADT<T> {
     }
 
     /**
-     * Sorts the elements in the list according to their natural ordering.
-     * <p>
-     * The list must contain elements that implement the Comparable interface.
-     * 
-     * @throws ClassCastException if the elements in this list aren't comparable
-     */
-    void sort();
-
-    /**
      * Returns the index of the first occurrence of the specified target
      * in this list, or -1 if this list does not contain the target.
      * 

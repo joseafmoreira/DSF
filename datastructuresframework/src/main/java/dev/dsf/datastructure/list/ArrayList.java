@@ -3,7 +3,6 @@ package dev.dsf.datastructure.list;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
-import dev.dsf.algorithm.sort.MergeSort;
 import dev.dsf.datastructure.list.ordered.OrderedArrayList;
 import dev.dsf.datastructure.list.unordered.UnorderedArrayList;
 import dev.dsf.exception.EmptyCollectionException;
@@ -66,16 +65,6 @@ public abstract class ArrayList<T> extends AbstractList<T> {
     /**
      * {@inheritDoc}
      * 
-     * @throws ClassCastException {@inheritDoc}
-     */
-    @Override
-    public void sort() {
-        MergeSort.sort(array, size());
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @throws EmptyCollectionException  {@inheritDoc}
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
@@ -87,7 +76,7 @@ public abstract class ArrayList<T> extends AbstractList<T> {
             throw new IndexOutOfBoundsException("Index out of bounds");
         T result = array[index];
         array[index] = null;
-        for (int i = index; i < size() + 1; i++)
+        for (int i = index; i < size() - 1; i++)
             array[i] = array[i + 1];
         array[--size] = null;
         modCount++;

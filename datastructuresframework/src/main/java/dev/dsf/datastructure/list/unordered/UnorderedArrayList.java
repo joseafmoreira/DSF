@@ -2,6 +2,7 @@ package dev.dsf.datastructure.list.unordered;
 
 import dev.dsf.abstractdatatype.UnorderedListADT;
 import dev.dsf.algorithm.search.LinearSearch;
+import dev.dsf.algorithm.sort.MergeSort;
 import dev.dsf.datastructure.list.ArrayList;
 import dev.dsf.exception.EmptyCollectionException;
 
@@ -76,5 +77,15 @@ public class UnorderedArrayList<T> extends ArrayList<T> implements UnorderedList
     @Override
     public int indexOf(T target) {
         return LinearSearch.search(array, size(), target);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @throws ClassCastException {@inheritDoc}
+     */
+    @Override
+    public void sort() {
+        MergeSort.sort(array, size());
     }
 }

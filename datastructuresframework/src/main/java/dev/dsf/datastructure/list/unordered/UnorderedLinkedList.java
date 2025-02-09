@@ -1,6 +1,7 @@
 package dev.dsf.datastructure.list.unordered;
 
 import dev.dsf.abstractdatatype.UnorderedListADT;
+import dev.dsf.algorithm.sort.MergeSort;
 import dev.dsf.datastructure.list.LinkedList;
 import dev.dsf.exception.EmptyCollectionException;
 import dev.dsf.node.LinearNode;
@@ -70,5 +71,21 @@ public class UnorderedLinkedList<T> extends LinkedList<T> implements UnorderedLi
         T result = currentNode.getElement();
         currentNode.setElement(element);
         return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @throws ClassCastException {@inheritDoc}
+     */
+    @Override
+    public void sort() {
+        T[] array = MergeSort.sort(this);
+        int i = 0;
+        LinearNode<T> currentNode = head;
+        while (currentNode != null) {
+            currentNode.setElement(array[i++]);
+            currentNode = currentNode.getNext();
+        }
     }
 }
