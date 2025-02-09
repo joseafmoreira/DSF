@@ -1,5 +1,6 @@
 package dev.dsf.datastructure.list;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 import dev.dsf.abstractdatatype.ListADT;
@@ -52,9 +53,14 @@ public abstract class AbstractList<T> extends AbstractIterableCollection<T> impl
     }
 
     /**
-     * {@code Iterator} skeletal-implementation for the {@code ListADT} based classes
+     * {@code Iterator} skeletal-implementation for the {@code ListADT} based
+     * classes
      */
     protected abstract class ListIterator implements Iterator<T> {
+        /**
+         * The current index of this list
+         */
+        protected int currentIndex;
         /**
          * The expected number of modifications made to this list
          */
@@ -68,7 +74,32 @@ public abstract class AbstractList<T> extends AbstractIterableCollection<T> impl
          * Constructs an empty list iterator.
          */
         protected ListIterator() {
+            currentIndex = 0;
             expectedModCount = modCount;
+            okToRemove = false;
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public boolean hasNext() {
+            return currentIndex < size();
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @throws ConcurrentModificationException if this list has been altered
+         */
+        @Override
+        public void remove() throws ConcurrentModificationException, IllegalStateException {
+            if (expectedModCount != modCount)
+                throw new ConcurrentModificationException("List has been altered");
+            if (!okToRemove)
+                throw new IllegalStateException("Invalid remove call");
+            AbstractList.this.remove(--currentIndex);
+            expectedModCount++;
             okToRemove = false;
         }
     }

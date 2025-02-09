@@ -140,10 +140,6 @@ public abstract class LinkedList<T> extends AbstractList<T> {
      */
     private class LinkedListIterator extends ListIterator {
         /**
-         * The previous node of this linked list
-         */
-        private LinearNode<T> previousNode;
-        /**
          * The current node of this linked list
          */
         private LinearNode<T> currentNode;
@@ -153,16 +149,7 @@ public abstract class LinkedList<T> extends AbstractList<T> {
          */
         public LinkedListIterator() {
             super();
-            previousNode = null;
             currentNode = head;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public boolean hasNext() {
-            return currentNode != null;
         }
 
         /**
@@ -175,26 +162,10 @@ public abstract class LinkedList<T> extends AbstractList<T> {
             if (expectedModCount != modCount)
                 throw new ConcurrentModificationException("List has been altered");
             T result = currentNode.getElement();
-            okToRemove = true;
-            previousNode = currentNode;
             currentNode = currentNode.getNext();
+            okToRemove = true;
+            currentIndex++;
             return result;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @throws ConcurrentModificationException if this list has been altered
-         */
-        @Override
-        public void remove() throws ConcurrentModificationException, IllegalStateException {
-            if (expectedModCount != modCount)
-                throw new ConcurrentModificationException("List has been altered");
-            if (!okToRemove)
-                throw new IllegalStateException("Invalid remove call");
-            LinkedList.this.remove(previousNode.getElement());
-            expectedModCount++;
-            okToRemove = false;
         }
     }
 }
