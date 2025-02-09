@@ -2,7 +2,6 @@ package dev.dsf.datastructure.list.ordered;
 
 import dev.dsf.abstractdatatype.OrderedListADT;
 import dev.dsf.datastructure.list.DoubleLinkedList;
-import dev.dsf.exception.EmptyCollectionException;
 import dev.dsf.node.DoubleLinearNode;
 
 /**
@@ -59,69 +58,5 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
         }
         size++;
         modCount++;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @throws EmptyCollectionException  {@inheritDoc}
-     * @throws IndexOutOfBoundsException {@inheritDoc}
-     */
-    @SuppressWarnings("unchecked")
-    public T set(int index, T element) {
-        if (isEmpty())
-            throw new EmptyCollectionException("List is empty");
-        if (index < 0 || index >= size())
-            throw new IndexOutOfBoundsException("Index out of bounds");
-        DoubleLinearNode<T> currentNode = head;
-        for (int i = 0; i < index; i++)
-            currentNode = currentNode.getNext();
-        T oldElement = currentNode.getElement();
-        currentNode.setElement(element);
-        if (element == null) {
-            if (currentNode != tail) {
-                if (currentNode.getPrev() != null)
-                    currentNode.getPrev().setNext(currentNode.getNext());
-                else
-                    head = currentNode.getNext();
-                if (currentNode.getNext() != null)
-                    currentNode.getNext().setPrev(currentNode.getPrev());
-                tail.setNext(currentNode);
-                currentNode.setPrev(tail);
-                currentNode.setNext(null);
-                tail = currentNode;
-            }
-        } else {
-            DoubleLinearNode<T> prevNode = currentNode.getPrev();
-            DoubleLinearNode<T> nextNode = currentNode.getNext();
-            while (nextNode != null && (nextNode.getElement() == null || ((Comparable<T>) element).compareTo(nextNode.getElement()) > 0)) {
-                prevNode = nextNode;
-                nextNode = nextNode.getNext();
-            }
-            while (prevNode != null && prevNode.getElement() != null && ((Comparable<T>) element).compareTo(prevNode.getElement()) < 0) {
-                nextNode = prevNode;
-                prevNode = prevNode.getPrev();
-            }
-            if (currentNode.getNext() != nextNode) {
-                if (currentNode.getPrev() != null)
-                    currentNode.getPrev().setNext(currentNode.getNext());
-                else
-                    head = currentNode.getNext();
-                if (currentNode.getNext() != null)
-                    currentNode.getNext().setPrev(currentNode.getPrev());
-                currentNode.setNext(nextNode);
-                currentNode.setPrev(prevNode);
-                if (prevNode != null)
-                    prevNode.setNext(currentNode);
-                else
-                    head = currentNode;
-                if (nextNode != null)
-                    nextNode.setPrev(currentNode);
-                else
-                    tail = currentNode;
-            }
-        }
-        modCount++;
-        return oldElement;
     }
 }

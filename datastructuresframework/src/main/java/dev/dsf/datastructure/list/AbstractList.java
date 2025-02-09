@@ -45,6 +45,7 @@ public abstract class AbstractList<T> extends AbstractIterableCollection<T> impl
     /**
      * {@inheritDoc}
      */
+    @Override
     public void clear() {
         super.clear();
         modCount++;

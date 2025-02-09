@@ -53,19 +53,6 @@ public class OrderedArrayList<T> extends ArrayList<T> implements OrderedListADT<
     /**
      * {@inheritDoc}
      * 
-     * @throws EmptyCollectionException  {@inheritDoc}
-     * @throws IndexOutOfBoundsException {@inheritDoc}
-     */
-    public T set(int index, T element) {
-        T oldElement = remove(index);
-        add(element);
-        modCount++;
-        return oldElement;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @throws EmptyCollectionException {@inheritDoc}
      */
     @Override

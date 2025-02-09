@@ -48,6 +48,7 @@ public abstract class LinkedList<T> extends AbstractList<T> {
      * @throws EmptyCollectionException  {@inheritDoc}
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
+    @Override
     public T get(int index) {
         if (isEmpty())
             throw new EmptyCollectionException("List is empty");
@@ -65,6 +66,7 @@ public abstract class LinkedList<T> extends AbstractList<T> {
      * 
      * @throws ClassCastException {@inheritDoc}
      */
+    @Override
     public void sort() {
         T[] array = MergeSort.sort(this);
         int i = 0;
@@ -91,6 +93,7 @@ public abstract class LinkedList<T> extends AbstractList<T> {
      * @throws EmptyCollectionException  {@inheritDoc}
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
+    @Override
     public T remove(int index) {
         if (isEmpty())
             throw new EmptyCollectionException("List is empty");
@@ -102,7 +105,7 @@ public abstract class LinkedList<T> extends AbstractList<T> {
             previousNode = currentNode;
             currentNode = currentNode.getNext();
         }
-        T result = currentNode.getElement();
+        T element = currentNode.getElement();
         if (previousNode == null)
             head = currentNode.getNext();
         else
@@ -111,12 +114,13 @@ public abstract class LinkedList<T> extends AbstractList<T> {
             tail = previousNode;
         size--;
         modCount++;
-        return result;
+        return element;
     }
 
     /**
      * {@inheritDoc}
      */
+    @Override
     public void clear() {
         super.clear();
         head = null;
@@ -126,6 +130,7 @@ public abstract class LinkedList<T> extends AbstractList<T> {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Iterator<T> iterator() {
         return new LinkedListIterator();
     }

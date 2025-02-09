@@ -34,6 +34,7 @@ public abstract class AbstractCollection implements CollectionADT {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void clear() {
         size = 0;
     }
@@ -41,6 +42,7 @@ public abstract class AbstractCollection implements CollectionADT {
     /**
      * {@inheritDoc}
      */
+    @Override
     public int size() {
         return size;
     }

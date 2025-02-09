@@ -48,6 +48,7 @@ public abstract class DoubleLinkedList<T> extends AbstractList<T> {
      * @throws EmptyCollectionException  {@inheritDoc}
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
+    @Override
     public T get(int index) {
         if (isEmpty())
             throw new EmptyCollectionException("List is empty");
@@ -65,6 +66,7 @@ public abstract class DoubleLinkedList<T> extends AbstractList<T> {
      * 
      * @throws ClassCastException {@inheritDoc}
      */
+    @Override
     public void sort() {
         T[] array = MergeSort.sort(this);
         int i = 0;
@@ -91,6 +93,7 @@ public abstract class DoubleLinkedList<T> extends AbstractList<T> {
      * @throws EmptyCollectionException  {@inheritDoc}
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
+    @Override
     public T remove(int index) {
         if (isEmpty())
             throw new EmptyCollectionException("List is empty");
@@ -99,7 +102,7 @@ public abstract class DoubleLinkedList<T> extends AbstractList<T> {
         DoubleLinearNode<T> currentNode = head;
         for (int i = 0; i < index; i++)
             currentNode = currentNode.getNext();
-        T result = currentNode.getElement();
+        T element = currentNode.getElement();
         if (currentNode.getPrev() == null) {
             head = currentNode.getNext();
             if (head != null)
@@ -114,12 +117,13 @@ public abstract class DoubleLinkedList<T> extends AbstractList<T> {
             currentNode.getNext().setPrev(currentNode.getPrev());
         size--;
         modCount++;
-        return result;
+        return element;
     }
 
     /**
      * {@inheritDoc}
      */
+    @Override
     public void clear() {
         super.clear();
         head = null;
@@ -129,6 +133,7 @@ public abstract class DoubleLinkedList<T> extends AbstractList<T> {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Iterator<T> iterator() {
         return new DoubleLinkedListIterator();
     }

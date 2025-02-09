@@ -2,7 +2,6 @@ package dev.dsf.datastructure.list.ordered;
 
 import dev.dsf.abstractdatatype.OrderedListADT;
 import dev.dsf.datastructure.list.LinkedList;
-import dev.dsf.exception.EmptyCollectionException;
 import dev.dsf.node.LinearNode;
 
 /**
@@ -56,65 +55,5 @@ public class OrderedLinkedList<T> extends LinkedList<T> implements OrderedListAD
         }
         size++;
         modCount++;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @throws EmptyCollectionException  {@inheritDoc}
-     * @throws IndexOutOfBoundsException {@inheritDoc}
-     */
-    @SuppressWarnings("unchecked")
-    public T set(int index, T element) {
-        if (isEmpty())
-            throw new EmptyCollectionException("List is empty");
-        if (index < 0 || index >= size())
-            throw new IndexOutOfBoundsException("Index out of bounds");
-        LinearNode<T> previousNode = null;
-        LinearNode<T> currentNode = head;
-        for (int i = 0; i < index; i++) {
-            previousNode = currentNode;
-            currentNode = currentNode.getNext();
-        }
-        T oldElement = currentNode.getElement();
-        currentNode.setElement(element);
-        if (element == null) {
-            if (currentNode != tail) {
-                if (previousNode != null)
-                    previousNode.setNext(currentNode.getNext());
-                else
-                    head = currentNode.getNext();
-                if (currentNode.getNext() == null)
-                    tail = previousNode;
-                tail.setNext(currentNode);
-                currentNode.setNext(null);
-                tail = currentNode;
-            }
-        } else {
-            LinearNode<T> insertPreviousNode = null;
-            LinearNode<T> insertCurrentNode = head;
-            while (insertCurrentNode != null && (insertCurrentNode.getElement() == null
-                    || ((Comparable<T>) element).compareTo(insertCurrentNode.getElement()) > 0)) {
-                insertPreviousNode = insertCurrentNode;
-                insertCurrentNode = insertCurrentNode.getNext();
-            }
-            if (currentNode.getNext() != insertCurrentNode) {
-                if (previousNode != null)
-                    previousNode.setNext(currentNode.getNext());
-                else
-                    head = currentNode.getNext();
-                if (currentNode.getNext() == null)
-                    tail = previousNode;
-                currentNode.setNext(insertCurrentNode);
-                if (insertPreviousNode != null)
-                    insertPreviousNode.setNext(currentNode);
-                else
-                    head = currentNode;
-                if (currentNode.getNext() == null)
-                    tail = currentNode;
-            }
-        }
-        modCount++;
-        return oldElement;
     }
 }

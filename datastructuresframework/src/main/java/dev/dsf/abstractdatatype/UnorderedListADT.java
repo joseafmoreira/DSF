@@ -2,6 +2,8 @@ package dev.dsf.abstractdatatype;
 
 import java.util.NoSuchElementException;
 
+import dev.dsf.exception.EmptyCollectionException;
+
 /**
  * An unordered list is a linear abstract data type that allows the addition in
  * which the order of it's elements is determined by the end user.
@@ -115,4 +117,19 @@ public interface UnorderedListADT<T> extends ListADT<T> {
         for (T element : this)
             addLast(element);
     }
+
+    /**
+     * Replaces the element at the specified index in this list with the
+     * specified element.
+     * 
+     * @param index   the specified index of the element to replace
+     * @param element the specified element
+     * @return the element previously at the specified position
+     * @throws EmptyCollectionException  if this list is empty
+     * @throws IndexOutOfBoundsException if the index is out of range
+     *                                   ({@code index < 0 || index >= size()})
+     * @throws NullPointerException      if the specified element is null and
+     *                                   this list does not allow null elements
+     */
+    T set(int index, T element);
 }

@@ -88,21 +88,6 @@ public interface ListADT<T> extends IterableCollectionADT<T> {
     }
 
     /**
-     * Replaces the element at the specified index in this list with the
-     * specified element.
-     * 
-     * @param index   the specified index of the element to replace
-     * @param element the specified element
-     * @return the element previously at the specified position
-     * @throws EmptyCollectionException  if this list is empty
-     * @throws IndexOutOfBoundsException if the index is out of range
-     *                                   ({@code index < 0 || index >= size()})
-     * @throws NullPointerException      if the specified element is null and
-     *                                   this list does not allow null elements
-     */
-    T set(int index, T element);
-
-    /**
      * Sorts the elements in the list according to their natural ordering.
      * <p>
      * The list must contain elements that implement the Comparable interface.

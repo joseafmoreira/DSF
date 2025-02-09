@@ -38,6 +38,7 @@ public class UnorderedArrayList<T> extends ArrayList<T> implements UnorderedList
      * 
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
+    @Override
     public void add(int index, T element) {
         if (index < 0 || index > size())
             throw new IndexOutOfBoundsException("Index out of bounds");
@@ -56,6 +57,7 @@ public class UnorderedArrayList<T> extends ArrayList<T> implements UnorderedList
      * @throws EmptyCollectionException {@inheritDoc}
      * @throws IndexOutOfBoundsException {@inheritDoc}
      */
+    @Override
     public T set(int index, T element) {
         if (isEmpty())
             throw new EmptyCollectionException("List is empty");
