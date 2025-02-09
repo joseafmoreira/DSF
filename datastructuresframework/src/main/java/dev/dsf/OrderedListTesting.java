@@ -5,13 +5,11 @@ import dev.dsf.datastructure.list.ordered.OrderedArrayList;
 import dev.dsf.datastructure.list.ordered.OrderedDoubleLinkedList;
 import dev.dsf.datastructure.list.ordered.OrderedLinkedList;
 
-public abstract class OrderedListTesting {
-    private static final String CLASS = "ARRAY";
-    private static final int CAPACITY = 0;
-
+public abstract class OrderedListTesting extends ListTesting {
     public static void main(String[] args) {
-        OrderedListADT<Integer> list = (CLASS.equals("ARRAY") ? new OrderedArrayList<>(CAPACITY)
-                : (CLASS.equals("LINKED") ? new OrderedLinkedList<>() : new OrderedDoubleLinkedList<>()));
+        OrderedListADT<Integer> list = getInstance(Type.DLINKED);
+        System.out.println("List class: " + list.getClass());
+
         list.add(1);
         list.add(3);
         list.add(2);
@@ -35,5 +33,18 @@ public abstract class OrderedListTesting {
 
         list.clear();
         System.out.println("(" + list.size() + ")" + list);
+    }
+
+    private static <T> OrderedListADT<T> getInstance(Type type) {
+        switch (type) {
+            case ARRAY:
+                return new OrderedArrayList<>(ARRAY_INITIAL_CAPACITY);
+            case LINKED:
+                return new OrderedLinkedList<>();
+            case DLINKED:
+                return new OrderedDoubleLinkedList<>();
+            default:
+                return null;
+        }
     }
 }

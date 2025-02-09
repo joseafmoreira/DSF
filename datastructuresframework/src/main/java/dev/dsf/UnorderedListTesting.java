@@ -5,13 +5,11 @@ import dev.dsf.datastructure.list.unordered.UnorderedArrayList;
 import dev.dsf.datastructure.list.unordered.UnorderedDoubleLinkedList;
 import dev.dsf.datastructure.list.unordered.UnorderedLinkedList;
 
-public abstract class UnorderedListTesting {
-    private static final String CLASS = "LINKED";
-    private static final int CAPACITY = 0;
-
+public abstract class UnorderedListTesting extends ListTesting {
     public static void main(String[] args) {
-        UnorderedListADT<Integer> list = (CLASS.equals("ARRAY") ? new UnorderedArrayList<>(CAPACITY)
-                : (CLASS.equals("LINKED") ? new UnorderedLinkedList<>() : new UnorderedDoubleLinkedList<>()));
+        UnorderedListADT<Integer> list = getInstance(Type.LINKED);
+        System.out.println("List class: " + list.getClass());
+
         list.addLast(1);
         list.addLast(3);
         list.addLast(2);
@@ -42,5 +40,18 @@ public abstract class UnorderedListTesting {
         
         list.clear();
         System.out.println("(" + list.size() + ")" + list);
+    }
+
+    private static <T> UnorderedListADT<T> getInstance(Type type) {
+        switch (type) {
+            case ARRAY:
+                return new UnorderedArrayList<>(ARRAY_INITIAL_CAPACITY);
+            case LINKED:
+                return new UnorderedLinkedList<>();
+            case DLINKED:
+                return new UnorderedDoubleLinkedList<>();
+            default:
+                return null;
+        }
     }
 }

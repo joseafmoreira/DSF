@@ -5,10 +5,12 @@ import dev.dsf.datastructure.stack.ArrayStack;
 import dev.dsf.datastructure.stack.LinkedStack;
 
 public abstract class StackTesting {
-    private static final String CLASS = "LINKED";
+    private static final boolean isArray = false;
 
     public static void main(String[] args) {
-        StackADT<Integer> stack = (CLASS.equals("ARRAY") ? new ArrayStack<>() : new LinkedStack<>());
+        StackADT<Integer> stack = (isArray ? new ArrayStack<>() : new LinkedStack<>());
+        System.out.println("Stack class: " + stack.getClass());
+
         stack.push(1);
         stack.push(3);
         stack.push(4);
