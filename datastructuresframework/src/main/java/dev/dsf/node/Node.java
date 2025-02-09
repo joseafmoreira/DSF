@@ -1,8 +1,8 @@
 package dev.dsf.node;
 
 /**
- * A node is an auxiliary object used to store an {@code element} and an array
- * of {@code pointers}.
+ * A node is an auxiliary object used to store an element and an array of
+ * pointers.
  * <p>
  * 
  * The available constructors are the following:
@@ -23,10 +23,6 @@ package dev.dsf.node;
  * node</li>
  * <li>{@link #setElement(Object)}: Sets the element stored in this
  * node</li>
- * <li>{@link #getPointer(int)}: Returns the pointer stored in a specified index
- * of this node's pointers array</li>
- * <li>{@link #setPointer(int, Node)}: Sets the pointer in a specified index of
- * this node's pointers array</li>
  * <li>{@link #equals(Object)}: Compares this node with the specified
  * object for equality</li>
  * <li>{@link #hashCode()}: Returns the hash code value for this
@@ -41,9 +37,12 @@ package dev.dsf.node;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
+ * @see GenericNode
  * @see LinearNode
+ * @see DoubleLinearNode
+ * @see BinaryTreeNode
  */
-public class Node<T> {
+public abstract class Node<T> {
     /**
      * The prime number used to generate the hash for this node
      */
@@ -60,7 +59,7 @@ public class Node<T> {
     /**
      * Constructs an empty node.
      */
-    public Node() {
+    protected Node() {
         this(null);
     }
 
@@ -69,7 +68,7 @@ public class Node<T> {
      * 
      * @param element the element to be stored in this node
      */
-    public Node(T element) {
+    protected Node(T element) {
         this(element, 0);
     }
 
@@ -82,7 +81,7 @@ public class Node<T> {
      *                  array
      */
     @SuppressWarnings("unchecked")
-    public Node(T element, int nPointers) {
+    protected Node(T element, int nPointers) {
         setElement(element);
         pointers = (Node<T>[]) new Node[nPointers];
     }
@@ -94,7 +93,7 @@ public class Node<T> {
      * @param pointers the pointers to be stored in this node's pointers array
      */
     @SuppressWarnings("unchecked")
-    public Node(T element, Node<T>... pointers) {
+    protected Node(T element, Node<T>... pointers) {
         this(element, pointers.length);
         int i = 0;
         for (Node<T> pointer : pointers)
@@ -117,31 +116,6 @@ public class Node<T> {
      */
     public void setElement(T element) {
         this.element = element;
-    }
-
-    /**
-     * Returns the pointer stored in a specified index of this node's pointers
-     * array.
-     * 
-     * @param index the specified index
-     * @return the pointer stored in a specified index of this node's pointers array
-     */
-    public Node<T> getPointer(int index) {
-        if (index < 0 || index >= pointers.length)
-            throw new IndexOutOfBoundsException("Index is out of bounds");
-        return pointers[index];
-    }
-
-    /**
-     * Sets the pointer in a specified index of this node's pointers array.
-     * 
-     * @param index   the specified index
-     * @param pointer the pointer to set at the specified index
-     */
-    public void setPointer(int index, Node<T> pointer) {
-        if (index < 0 || index >= pointers.length)
-            throw new IndexOutOfBoundsException("Index is out of bounds");
-        pointers[index] = pointer;
     }
 
     /**

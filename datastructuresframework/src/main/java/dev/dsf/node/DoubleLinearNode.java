@@ -2,7 +2,8 @@ package dev.dsf.node;
 
 /**
  * A double linear node is an auxiliary object used to implement a doubly linked
- * data structure.
+ * data structure, using the {@code Node} abstract class as a base code.
+ * <p>
  * It contains an {@code #element}, a pointer to the {@code #next} double linear
  * node and a pointer to the {@code #prev} double linear node.
  * <p>
@@ -27,7 +28,6 @@ package dev.dsf.node;
  * <li>{@link #setNext(DoubleLinearNode)}: Sets the reference stored in this
  * linear
  * node next pointer</li>
- * </ul>
  * <li>{@link #getPrev()}: Returns the reference stored in this linear node prev
  * pointer</li>
  * <li>{@link #setPrev(DoubleLinearNode)}: Sets the reference stored in this
