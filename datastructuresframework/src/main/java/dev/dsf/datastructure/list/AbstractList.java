@@ -39,14 +39,6 @@ public abstract class AbstractList<T> extends AbstractIterableCollection<T> impl
      * {@inheritDoc}
      */
     @Override
-    public boolean contains(T target) {
-        return indexOf(target) != -1;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public void clear() {
         super.clear();
         modCount++;

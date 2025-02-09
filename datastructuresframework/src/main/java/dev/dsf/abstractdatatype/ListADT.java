@@ -101,6 +101,14 @@ public interface ListADT<T> extends IterableCollectionADT<T> {
     int indexOf(T target);
 
     /**
+     * {@inheritDoc}
+     */
+    @Override
+    default boolean contains(T target) {
+        return indexOf(target) != -1;
+    }
+
+    /**
      * Removes an element from this list at a specified index.
      * 
      * @param index the specified index
