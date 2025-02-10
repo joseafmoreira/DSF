@@ -12,7 +12,7 @@ import dev.dsf.abstractdatatype.MaxHeapADT;
  * @version 1.0
  * @author joseafmoreira
  */
-public class LinkedMaxHeap<T> extends LinkedHeap<T> implements MaxHeapADT<T> {
+public abstract class LinkedMaxHeap<T> extends LinkedHeap<T> implements MaxHeapADT<T> {
     /**
      * Constructs an empty heap.
      */

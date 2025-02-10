@@ -1,8 +1,10 @@
 package dev.dsf.datastructure.collection;
 
-import dev.dsf.abstractdatatype.CollectionADT;
+import java.util.StringJoiner;
+
 import dev.dsf.abstractdatatype.UnorderedListADT;
 import dev.dsf.datastructure.stack.AbstractStack;
+import dev.dsf.datastructure.binarytree.ArrayBinaryTree;
 import dev.dsf.datastructure.queue.AbstractQueue;
 
 /**
@@ -18,18 +20,28 @@ import dev.dsf.datastructure.queue.AbstractQueue;
  * @author joseafmoreira
  * @see AbstractStack
  * @see AbstractQueue
+ * @see ArrayBinaryTree
  */
-public abstract class AbstractListBasedCollection<T> implements CollectionADT {
+public abstract class AbstractListBasedCollection<T> extends AbstractCollection {
     /**
      * The list containing the elements of this collection
      */
     protected UnorderedListADT<T> list;
+    /**
+     * A flag indicating whether this collection's size is the list size
+     */
+    private final boolean isListSize;
 
     /**
      * Constructs an empty collection.
      */
     protected AbstractListBasedCollection() {
+        this(true);
+    }
+
+    protected AbstractListBasedCollection(boolean isListSize) {
         super();
+        this.isListSize = isListSize;
     }
 
     /**
@@ -37,6 +49,7 @@ public abstract class AbstractListBasedCollection<T> implements CollectionADT {
      */
     @Override
     public void clear() {
+        super.clear();
         list.clear();
     }
 
@@ -45,7 +58,7 @@ public abstract class AbstractListBasedCollection<T> implements CollectionADT {
      */
     @Override
     public int size() {
-        return list.size();
+        return isListSize ? list.size() : super.size();
     }
 
     /**

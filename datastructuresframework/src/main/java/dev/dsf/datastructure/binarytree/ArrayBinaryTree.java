@@ -1,13 +1,14 @@
 package dev.dsf.datastructure.binarytree;
 
 import java.util.Iterator;
+import java.util.StringJoiner;
 
 import dev.dsf.abstractdatatype.BinaryTreeADT;
 import dev.dsf.abstractdatatype.QueueADT;
 import dev.dsf.abstractdatatype.UnorderedListADT;
 import dev.dsf.datastructure.binarytree.heap.ArrayHeap;
 import dev.dsf.datastructure.binarytree.search.ArrayBinarySearchTree;
-import dev.dsf.datastructure.collection.AbstractIterableCollection;
+import dev.dsf.datastructure.collection.AbstractListBasedCollection;
 import dev.dsf.datastructure.list.unordered.UnorderedArrayList;
 import dev.dsf.datastructure.list.unordered.UnorderedLinkedList;
 import dev.dsf.datastructure.queue.LinkedQueue;
@@ -25,17 +26,12 @@ import dev.dsf.exception.EmptyCollectionException;
  * @see ArrayBinarySearchTree
  * @see ArrayHeap
  */
-public abstract class ArrayBinaryTree<T> extends AbstractIterableCollection<T> implements BinaryTreeADT<T> {
-    /**
-     * The array list containing the elements of this binary tree
-     */
-    protected UnorderedArrayList<T> list;
-
+public abstract class ArrayBinaryTree<T> extends AbstractListBasedCollection<T> implements BinaryTreeADT<T> {
     /**
      * Constructs an empty binary tree.
      */
     protected ArrayBinaryTree() {
-        super();
+        super(false);
         list = new UnorderedArrayList<>();
     }
 
@@ -55,18 +51,10 @@ public abstract class ArrayBinaryTree<T> extends AbstractIterableCollection<T> i
      * {@inheritDoc}
      */
     @Override
-    public void clear() {
-        super.clear();
-        list = new UnorderedArrayList<>();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public Iterator<T> iteratorPreOrder() {
         UnorderedListADT<T> list = new UnorderedLinkedList<>();
-        preOrder(0, list);
+        if (!isEmpty())
+            preOrder(0, list);
         return list.iterator();
     }
 
@@ -76,7 +64,8 @@ public abstract class ArrayBinaryTree<T> extends AbstractIterableCollection<T> i
     @Override
     public Iterator<T> iteratorInOrder() {
         UnorderedListADT<T> list = new UnorderedLinkedList<>();
-        inOrder(0, list);
+        if (!isEmpty())
+            inOrder(0, list);
         return list.iterator();
     }
 
@@ -86,7 +75,8 @@ public abstract class ArrayBinaryTree<T> extends AbstractIterableCollection<T> i
     @Override
     public Iterator<T> iteratorPostOrder() {
         UnorderedListADT<T> list = new UnorderedLinkedList<>();
-        postOrder(0, list);
+        if (!isEmpty())
+            postOrder(0, list);
         return list.iterator();
     }
 
@@ -100,61 +90,72 @@ public abstract class ArrayBinaryTree<T> extends AbstractIterableCollection<T> i
         if (!isEmpty())
             queue.enqueue(0);
         while (!queue.isEmpty()) {
-            int index = queue.dequeue();
-            T element = this.list.get(index);
+            int currentIndex = queue.dequeue();
+            T element = this.list.get(currentIndex);
             if (element != null) {
-                list.addLast(this.list.get(index));
-                if (index * 2 + 1 < this.list.size())
-                    queue.enqueue(index * 2 + 1);
-                if (index * 2 + 2 < this.list.size())
-                    queue.enqueue(index * 2 + 2);
+                list.addLast(this.list.get(currentIndex));
+                if (currentIndex * 2 + 1 < this.list.size())
+                    queue.enqueue(currentIndex * 2 + 1);
+                if (currentIndex * 2 + 2 < this.list.size())
+                    queue.enqueue(currentIndex * 2 + 2);
             }
         }
         return list.iterator();
     }
 
     /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        StringJoiner message = new StringJoiner(", ", "[", "]");
+        for (T element : this)
+            message.add(element.toString());
+        return message.toString();
+    }
+
+    /**
      * Performs a pre-order traversal of this binary tree,
      * adding each element to the list.
      * 
-     * @param currentNode the current node being visited
-     * @param list        the list to add the elements to
+     * @param currentIndex the current index being visited
+     * @param list         the list to add the elements to
      */
-    private void preOrder(int index, UnorderedListADT<T> list) {
-        if (index >= this.list.size() || this.list.get(index) == null)
+    private void preOrder(int currentIndex, UnorderedListADT<T> list) {
+        if (currentIndex >= this.list.size() || this.list.get(currentIndex) == null)
             return;
-        list.addLast(this.list.get(index));
-        preOrder(index * 2 + 1, list);
-        preOrder(index * 2 + 2, list);
+        list.addLast(this.list.get(currentIndex));
+        preOrder(currentIndex * 2 + 1, list);
+        preOrder(currentIndex * 2 + 2, list);
     }
 
     /**
      * Performs an in-order traversal of this binary tree,
      * adding each element to the list.
      * 
-     * @param currentNode the current node being visited
-     * @param list        the list to add the elements to
+     * @param currentIndex the current index being visited
+     * @param list         the list to add the elements to
      */
-    private void inOrder(int index, UnorderedListADT<T> list) {
-        if (index >= this.list.size() || this.list.get(index) == null)
+    private void inOrder(int currentIndex, UnorderedListADT<T> list) {
+        if (currentIndex >= this.list.size() || this.list.get(currentIndex) == null)
             return;
-        inOrder(index * 2 + 1, list);
-        list.addLast(this.list.get(index));
-        inOrder(index * 2 + 2, list);
+        inOrder(currentIndex * 2 + 1, list);
+        list.addLast(this.list.get(currentIndex));
+        inOrder(currentIndex * 2 + 2, list);
     }
 
     /**
      * Performs a post-order traversal of this binary tree,
      * adding each element to the list.
      * 
-     * @param currentNode   the current node being visited
+     * @param currentIndex  the current index being visited
      * @param unorderedList the list to add the elements to
      */
-    private void postOrder(int index, UnorderedListADT<T> list) {
-        if (index >= this.list.size() || this.list.get(index) == null)
+    private void postOrder(int currentIndex, UnorderedListADT<T> list) {
+        if (currentIndex >= this.list.size() || this.list.get(currentIndex) == null)
             return;
-        postOrder(index * 2 + 1, list);
-        postOrder(index * 2 + 2, list);
-        list.addLast(this.list.get(index));
+        postOrder(currentIndex * 2 + 1, list);
+        postOrder(currentIndex * 2 + 2, list);
+        list.addLast(this.list.get(currentIndex));
     }
 }

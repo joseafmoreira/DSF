@@ -21,7 +21,9 @@ public abstract class BinarySearchTreeTesting extends CollectionTesting {
         Collection(binaryTree);
 
         System.out.println("Removed element: " + binaryTree.removeMin());
+        Collection(binaryTree);
         System.out.println("Removed element: " + binaryTree.removeMax());
+        Collection(binaryTree);
         System.out.println("Removed element: " + binaryTree.remove(3));
         Collection(binaryTree);
 

@@ -113,28 +113,25 @@ public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements Bina
         if (isEmpty())
             throw new EmptyCollectionException("Binary tree is empty");
         Comparable<T> comparableTarget = (Comparable<T>) target;
-        boolean hasRemoved = false;
         if (comparableTarget.equals(list.get(0))) {
-            replacement(0, replacement(0));
-            size--;
-            hasRemoved = true;
+            remove(0, replacement(0));
+            return true;
         } else {
             int parentIndex = 0;
-            int currentIndex = parentIndex * 2 + (comparableTarget.compareTo(list.get(parentIndex)) <= 0 ? 1 : 2);
-            while (list.get(currentIndex) != null) {
+            int currentIndex = parentIndex * 2 +
+                    (comparableTarget.compareTo(list.get(parentIndex)) <= 0 ? 1 : 2);
+            while (currentIndex < list.size() && list.get(currentIndex) != null) {
                 if (comparableTarget.equals(list.get(currentIndex))) {
-                    replacement(parentIndex * 2 + (currentIndex == parentIndex * 2 + 1 ? 1 : 2),
-                            replacement(currentIndex));
-                    size--;
-                    hasRemoved = true;
-                    break;
+                    remove(currentIndex, replacement(currentIndex));
+                    return true;
                 } else {
                     parentIndex = currentIndex;
-                    currentIndex = parentIndex * 2 + (comparableTarget.compareTo(list.get(parentIndex)) <= 0 ? 1 : 2);
+                    currentIndex = parentIndex * 2 +
+                            (comparableTarget.compareTo(list.get(parentIndex)) <= 0 ? 1 : 2);
                 }
             }
         }
-        return hasRemoved;
+        return false;
     }
 
     /**
@@ -143,6 +140,33 @@ public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements Bina
     @Override
     public Iterator<T> iterator() {
         return iteratorInOrder();
+    }
+
+    /**
+     * Removes the element at the specified index in this binary search tree.
+     * <p>
+     * If the replacement index is -1, the element at the current index is set to
+     * null.
+     * Otherwise, the element at the current index is replaced with the element at
+     * the replacement index.
+     * If the replacement index is the right child of the current index, the
+     * replacement index is shifted.
+     * <p>
+     * The size of this binary tree is decremented by one.
+     *
+     * @param currentIndex     the index of the element to be removed
+     * @param replacementIndex the index of the replacement element, or -1 if there
+     *                         is no replacement
+     */
+    private void remove(int currentIndex, int replacementIndex) {
+        if (replacementIndex == -1)
+            list.set(currentIndex, null);
+        else {
+            list.set(currentIndex, list.get(replacementIndex));
+            if (replacementIndex == currentIndex * 2 + 2)
+                shift(replacementIndex);
+        }
+        size--;
     }
 
     /**
@@ -169,40 +193,40 @@ public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements Bina
     private int replacement(int index) {
         if (list.get(index * 2 + 1) == null && list.get(index * 2 + 2) == null)
             return -1;
-        int result;
         if (list.get(index * 2 + 1) != null && list.get(index * 2 + 2) == null)
-            result = index * 2 + 1;
-        else if (list.get(index * 2 + 1) == null && list.get(index * 2 + 2) != null)
-            result = index * 2 + 2;
-        else {
-            int currentIndex = index * 2 + 2;
-            int parentIndex = index;
-            while (list.get(currentIndex * 2 + 1) != null) {
-                parentIndex = currentIndex;
-                currentIndex = currentIndex * 2 + 1;
-            }
-            if (index * 2 + 2 == currentIndex)
-                replacement(currentIndex * 2 + 1, index * 2 + 1);
-            else {
-                replacement(parentIndex * 2 + 1, currentIndex * 2 + 2);
-                replacement(currentIndex * 2 + 2, index * 2 + 2);
-                replacement(currentIndex * 2 + 1, index * 2 + 1);
-            }
-            result = currentIndex;
+            return index * 2 + 1;
+        if (list.get(index * 2 + 1) == null && list.get(index * 2 + 2) != null)
+            return index * 2 + 2;
+        int parentIndex = index;
+        int currentIndex = index * 2 + 2;
+        while (list.get(currentIndex * 2 + 1) != null) {
+            parentIndex = currentIndex;
+            currentIndex = currentIndex * 2 + 1;
         }
-        return result;
+        if (currentIndex != index * 2 + 2) {
+            list.set(parentIndex * 2 + 1, list.get(currentIndex * 2 + 2));
+            list.set(currentIndex * 2 + 1, list.get(index * 2 + 1));
+            list.set(currentIndex * 2 + 2, list.get(index * 2 + 2));
+        }
+        return currentIndex;
     }
 
     /**
-     * Replaces the element in the first index with the element in the second index
-     * and sets the element in the second index to null.
+     * Shifts elements to maintain the binary search tree properties after a
+     * replacement.
      * 
-     * @param index1 the first index
-     * @param index2 the second index
+     * @param index the index of the node to be shifted
      */
-    private void replacement(int index1, int index2) {
-        list.set(index1, (index2 == -1 ? null : list.get(index2)));
-        if (index2 != -1)
-            list.set(index2, null);
+    private void shift(int index) {
+        int leftIndex = index * 2 + 1;
+        int rightIndex = index * 2 + 2;
+        if (leftIndex < list.size() && list.get(leftIndex) != null) {
+            list.set(index, list.get(leftIndex));
+            shift(leftIndex);
+        } else if (rightIndex < list.size() && list.get(rightIndex) != null) {
+            list.set(index, list.get(rightIndex));
+            shift(rightIndex);
+        } else
+            list.set(index, null);
     }
 }
