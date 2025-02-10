@@ -87,11 +87,4 @@ public interface BinaryTreeADT<T> extends IterableCollectionADT<T> {
      * @return an iterator over the elements in this binary tree
      */
     Iterator<T> iteratorLevelOrder();
-
-    /**
-     * {@inheritDoc}
-     */
-    default Iterator<T> iterator() {
-        return iteratorInOrder();
-    }
 }

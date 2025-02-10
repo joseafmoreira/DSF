@@ -5,7 +5,9 @@ import java.util.Iterator;
 import dev.dsf.abstractdatatype.BinaryTreeADT;
 import dev.dsf.abstractdatatype.QueueADT;
 import dev.dsf.abstractdatatype.UnorderedListADT;
-import dev.dsf.datastructure.collection.AbstractListBasedCollection;
+import dev.dsf.datastructure.binarytree.heap.ArrayHeap;
+import dev.dsf.datastructure.binarytree.search.ArrayBinarySearchTree;
+import dev.dsf.datastructure.collection.AbstractIterableCollection;
 import dev.dsf.datastructure.list.unordered.UnorderedArrayList;
 import dev.dsf.datastructure.list.unordered.UnorderedLinkedList;
 import dev.dsf.datastructure.queue.LinkedQueue;
@@ -23,7 +25,12 @@ import dev.dsf.exception.EmptyCollectionException;
  * @see ArrayBinarySearchTree
  * @see ArrayHeap
  */
-public abstract class ArrayBinaryTree<T> extends AbstractListBasedCollection<T> implements BinaryTreeADT<T> {
+public abstract class ArrayBinaryTree<T> extends AbstractIterableCollection<T> implements BinaryTreeADT<T> {
+    /**
+     * The array list containing the elements of this binary tree
+     */
+    protected UnorderedArrayList<T> list;
+
     /**
      * Constructs an empty binary tree.
      */
@@ -42,6 +49,15 @@ public abstract class ArrayBinaryTree<T> extends AbstractListBasedCollection<T> 
         if (isEmpty())
             throw new EmptyCollectionException("Binary tree is empty");
         return list.get(0);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void clear() {
+        super.clear();
+        list = new UnorderedArrayList<>();
     }
 
     /**
@@ -90,8 +106,8 @@ public abstract class ArrayBinaryTree<T> extends AbstractListBasedCollection<T> 
                 list.addLast(this.list.get(index));
                 if (index * 2 + 1 < this.list.size())
                     queue.enqueue(index * 2 + 1);
-                if ((index + 1) * 2 < this.list.size())
-                    queue.enqueue((index + 1) * 2);
+                if (index * 2 + 2 < this.list.size())
+                    queue.enqueue(index * 2 + 2);
             }
         }
         return list.iterator();
@@ -109,7 +125,7 @@ public abstract class ArrayBinaryTree<T> extends AbstractListBasedCollection<T> 
             return;
         list.addLast(this.list.get(index));
         preOrder(index * 2 + 1, list);
-        preOrder((index + 1) * 2, list);
+        preOrder(index * 2 + 2, list);
     }
 
     /**
@@ -124,7 +140,7 @@ public abstract class ArrayBinaryTree<T> extends AbstractListBasedCollection<T> 
             return;
         inOrder(index * 2 + 1, list);
         list.addLast(this.list.get(index));
-        inOrder((index + 1) * 2, list);
+        inOrder(index * 2 + 2, list);
     }
 
     /**
@@ -138,7 +154,7 @@ public abstract class ArrayBinaryTree<T> extends AbstractListBasedCollection<T> 
         if (index >= this.list.size() || this.list.get(index) == null)
             return;
         postOrder(index * 2 + 1, list);
-        postOrder((index + 1) * 2, list);
+        postOrder(index * 2 + 2, list);
         list.addLast(this.list.get(index));
     }
 }

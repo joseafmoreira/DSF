@@ -41,6 +41,7 @@ package dev.dsf.node;
  * @see LinearNode
  * @see DoubleLinearNode
  * @see BinaryTreeNode
+ * @see HeapNode
  */
 public abstract class Node<T> {
     /**

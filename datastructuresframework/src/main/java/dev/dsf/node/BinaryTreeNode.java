@@ -2,7 +2,7 @@ package dev.dsf.node;
 
 /**
  * A binary tree node is an auxiliary object used to implement a linked binary
- * tree data structure, using the {@code Node} abstract class as a base code.
+ * tree data structure.
  * <p>
  * It contains an element, a pointer to the left binary tree node and a pointer
  * to the right binary tree node.
@@ -58,7 +58,7 @@ public class BinaryTreeNode<T> extends Node<T> {
 
     /**
      * Constructs a binary tree node with an element, a reference to the left
-     * binary tree node and a reference to the right binary tree.
+     * binary tree node and a reference to the right binary tree node.
      * 
      * @param element the element to be stored in this binary tree node
      * @param left    the reference of the left binary tree node

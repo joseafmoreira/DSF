@@ -51,7 +51,7 @@ public interface IterableCollectionADT<T> extends CollectionADT, Iterable<T> {
     default boolean containsAll(IterableCollectionADT<T> collection) {
         if (collection == null)
             throw new NullPointerException("Collection is null");
-        for (T element : this)
+        for (T element : collection)
             if (!contains(element))
                 return false;
         return true;

@@ -1,8 +1,10 @@
 package dev.dsf.node;
 
 /**
- * A generic node is a concrete implemetation of the {@code Node} abstract
- * class.
+ * A generic node is an auxiliary object used to implement a linked data
+ * structure.
+ * <p>
+ * It contains an element and an array of pointers to other nodes.
  * <p>
  * 
  * The available constructors are the following:

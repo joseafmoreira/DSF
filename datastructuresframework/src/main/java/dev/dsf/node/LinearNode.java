@@ -2,7 +2,7 @@ package dev.dsf.node;
 
 /**
  * A linear node is an auxiliary object used to implement a singly linked
- * data structure, using the {@code Node} abstract class as a base code.
+ * data structure.
  * <p>
  * It contains an element and a pointer to the next linear node.
  * <p>

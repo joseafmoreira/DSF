@@ -73,13 +73,12 @@ public interface BinarySearchTreeADT<T> extends BinaryTreeADT<T> {
      * Removes a specified element from this binary search tree.
      * 
      * @param target the target to remove
-     * @return the removed element
+     * @return {@code true} if the specified target is removed from this binary
+     *         search tree
      * @throws NullPointerException     if the specified target is null
      * @throws EmptyCollectionException if this binary tree is empty
-     * @throws NoSuchElementException   if the specified target is not
-     *                                  found in this binary tree
      */
-    T remove(T target);
+    boolean remove(T target);
 
     /**
      * Removes the element from the leftmost node in this binary search tree.
@@ -88,7 +87,9 @@ public interface BinarySearchTreeADT<T> extends BinaryTreeADT<T> {
      * @throws EmptyCollectionException if this binary tree is empty
      */
     default T removeMin() {
-        return remove(findMin());
+        T removedElement = findMin();
+        remove(removedElement);
+        return removedElement;
     }
 
     /**
@@ -98,7 +99,9 @@ public interface BinarySearchTreeADT<T> extends BinaryTreeADT<T> {
      * @throws EmptyCollectionException if this binary tree is empty
      */
     default T removeMax() {
-        return remove(findMax());
+        T removedElement = findMax();
+        remove(removedElement);
+        return removedElement;
     }
 
     /**
@@ -109,12 +112,11 @@ public interface BinarySearchTreeADT<T> extends BinaryTreeADT<T> {
      * @throws EmptyCollectionException if this binary tree is empty
      */
     default void removeAllOccurrences(T target) {
-        while (true) {
+        while (true)
             try {
                 remove(target);
             } catch (NoSuchElementException ignored) {
                 break;
             }
-        }
     }
 }
