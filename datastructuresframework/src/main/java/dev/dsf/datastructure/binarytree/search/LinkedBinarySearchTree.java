@@ -1,7 +1,5 @@
 package dev.dsf.datastructure.binarytree.search;
 
-import java.util.Iterator;
-
 import dev.dsf.abstractdatatype.BinarySearchTreeADT;
 import dev.dsf.datastructure.binarytree.LinkedBinaryTree;
 import dev.dsf.exception.EmptyCollectionException;
@@ -160,14 +158,6 @@ public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T> implements Bi
             }
         }
         return hasRemoved;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Iterator<T> iterator() {
-        return iteratorInOrder();
     }
 
     /**

@@ -1,5 +1,6 @@
 package dev.dsf.abstractdatatype;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import dev.dsf.exception.EmptyCollectionException;
@@ -31,6 +32,8 @@ import dev.dsf.exception.EmptyCollectionException;
  * binary search tree</li>
  * <li>{@link #removeAllOccurrences(Object)}: Removes all occurrences of a
  * specified element from this binary search tree</li>
+ * <li>{@link #iterator()}: Returns an iterator over the element of this binary
+ * search tree</li>
  * </ul>
  * 
  * This interface is a member of the
@@ -118,5 +121,16 @@ public interface BinarySearchTreeADT<T> extends BinaryTreeADT<T> {
             } catch (NoSuchElementException ignored) {
                 break;
             }
+    }
+
+    /**
+     * Returns an iterator over the element of this binary search tree.
+     * 
+     * @return an iterator over the element of this binary search tree
+     * @see IterableCollectionADT#iterator()
+     */
+    @Override
+    default Iterator<T> iterator() {
+        return iteratorInOrder();
     }
 }

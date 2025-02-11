@@ -1,7 +1,5 @@
 package dev.dsf.datastructure.binarytree.heap;
 
-import java.util.Iterator;
-
 import dev.dsf.abstractdatatype.HeapADT;
 import dev.dsf.datastructure.binarytree.LinkedBinaryTree;
 import dev.dsf.node.HeapNode;
@@ -32,29 +30,5 @@ public abstract class LinkedHeap<T> extends LinkedBinaryTree<T> implements HeapA
     protected LinkedHeap() {
         super();
         lastNode = null;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @throws NullPointerException if the specified target is null
-     */
-    @Override
-    public boolean contains(T target) {
-        if (target == null)
-            throw new NullPointerException("Target is null");
-        for (T element : this)
-            if (element.equals(target))
-                return true;
-        return false;
-    }
-
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Iterator<T> iterator() {
-        return iteratorLevelOrder();
     }
 }

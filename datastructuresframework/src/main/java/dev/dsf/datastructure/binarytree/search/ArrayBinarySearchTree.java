@@ -1,7 +1,5 @@
 package dev.dsf.datastructure.binarytree.search;
 
-import java.util.Iterator;
-
 import dev.dsf.abstractdatatype.BinarySearchTreeADT;
 import dev.dsf.datastructure.binarytree.ArrayBinaryTree;
 import dev.dsf.exception.EmptyCollectionException;
@@ -132,14 +130,6 @@ public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements Bina
             }
         }
         return false;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Iterator<T> iterator() {
-        return iteratorInOrder();
     }
 
     /**

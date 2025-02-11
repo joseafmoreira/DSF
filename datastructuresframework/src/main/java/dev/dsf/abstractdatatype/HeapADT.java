@@ -1,5 +1,7 @@
 package dev.dsf.abstractdatatype;
 
+import java.util.Iterator;
+
 /**
  * A heap is a non-linear abstract data type that are complete binary trees
  * meaning that all the levels of the tree are filled except the lowest level
@@ -22,6 +24,8 @@ package dev.dsf.abstractdatatype;
  * <ul>
  * <li>{@link #add(Object)}: Adds an element to this heap at the proper
  * location</li>
+ * <li>{@link #iterator()}: Returns an iterator over the element of this
+ * heap</li>
  * </ul>
  * 
  * This interface is a member of the
@@ -45,4 +49,15 @@ public interface HeapADT<T> extends BinaryTreeADT<T> {
      * @throws ClassCastException   if the element isn't comparable
      */
     void add(T element);
+
+    /**
+     * Returns an iterator over the element of this heap.
+     * 
+     * @return an iterator over the element of this heap
+     * @see IterableCollectionADT#iterator()
+     */
+    @Override
+    default Iterator<T> iterator() {
+        return iteratorLevelOrder();
+    }
 }
