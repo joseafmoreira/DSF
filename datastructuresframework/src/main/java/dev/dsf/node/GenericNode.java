@@ -40,7 +40,7 @@ public class GenericNode<T> extends Node<T> {
     /**
      * Constructs an empty generic node.
      */
-    protected GenericNode() {
+    public GenericNode() {
         this(null);
     }
 
@@ -49,7 +49,7 @@ public class GenericNode<T> extends Node<T> {
      * 
      * @param element the element to be stored in this node
      */
-    protected GenericNode(T element) {
+    public GenericNode(T element) {
         this(element, 0);
     }
 
@@ -61,7 +61,7 @@ public class GenericNode<T> extends Node<T> {
      * @param nPointers the number of elements to be stored in this generic node's
      *                  pointers array
      */
-    protected GenericNode(T element, int nPointers) {
+    public GenericNode(T element, int nPointers) {
         super(element, nPointers);
     }
 
@@ -73,7 +73,7 @@ public class GenericNode<T> extends Node<T> {
      *                 array
      */
     @SuppressWarnings("unchecked")
-    protected GenericNode(T element, GenericNode<T>... pointers) {
+    public GenericNode(T element, GenericNode<T>... pointers) {
         super(element, pointers);
     }
 
