@@ -39,9 +39,7 @@ package dev.dsf.node;
  * @author joseafmoreira
  * @see GenericNode
  * @see LinearNode
- * @see DoubleLinearNode
  * @see BinaryTreeNode
- * @see HeapNode
  */
 public abstract class Node<T> {
     /**
@@ -95,10 +93,8 @@ public abstract class Node<T> {
      */
     @SuppressWarnings("unchecked")
     protected Node(T element, Node<T>... pointers) {
-        this(element, pointers.length);
-        int i = 0;
-        for (Node<T> pointer : pointers)
-            this.pointers[i++] = pointer;
+        setElement(element);
+        this.pointers = pointers;
     }
 
     /**

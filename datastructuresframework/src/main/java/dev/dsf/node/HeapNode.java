@@ -17,15 +17,15 @@ package dev.dsf.node;
  * <li>{@link #HeapNode(Object, HeapNode, HeapNode, HeapNode)}:
  * Constructs a heap node with an element, a reference to the parent heap node,
  * a reference to the left heap node and a reference to the right heap node</li>
+ * <li>{@link #HeapNode(Object, int)}: Constructs a node with an
+ * element and an empty array of pointers with a specified size</li>
+ * <li>{@link #HeapNode(Object, Node...)}: Constructs a node with an
+ * element and an array of pointers</li>
  * </ul>
  * 
  * The operations for this {@code HeapNode} include:
  * <p>
  * <ul>
- * <li>{@link #getParent()}: Returns the reference stored in this heap node
- * parent pointer</li>
- * <li>{@link #setParent(HeapNode)}: Sets the reference stored in this heap
- * node parent pointer</li>
  * <li>{@link #getLeft()}: Returns the reference stored in this heap node left
  * pointer</li>
  * <li>{@link #setLeft(HeapNode)}: Sets the reference stored in this heap
@@ -34,6 +34,10 @@ package dev.dsf.node;
  * pointer</li>
  * <li>{@link #setRight(HeapNode)}: Sets the reference stored in this heap
  * node right pointer</li>
+ * <li>{@link #getParent()}: Returns the reference stored in this heap node
+ * parent pointer</li>
+ * <li>{@link #setParent(HeapNode)}: Sets the reference stored in this heap
+ * node parent pointer</li>
  * </ul>
  * 
  * <h3>HeapNode</h3>
@@ -43,7 +47,7 @@ package dev.dsf.node;
  * @version 1.0
  * @author joseafmoreira
  */
-public class HeapNode<T> extends Node<T> {
+public class HeapNode<T> extends BinaryTreeNode<T> {
     /**
      * Constructs an empty heap node.
      */
@@ -70,26 +74,32 @@ public class HeapNode<T> extends Node<T> {
      * @param right   the reference of the right heap node
      */
     @SuppressWarnings("unchecked")
-    public HeapNode(T element, HeapNode<T> parent, HeapNode<T> left, HeapNode<T> right) {
-        super(element, parent, left, right);
+    public HeapNode(T element, HeapNode<T> left, HeapNode<T> right, HeapNode<T> parent) {
+        super(element, left, right, parent);
     }
 
     /**
-     * Returns the reference stored in this heap node parent pointer.
+     * Constructs a node with an element and an empty array of pointers with
+     * a specified size.
      * 
-     * @return the reference stored in this heap node parent pointer
+     * @param element   the element to be stored in this node
+     * @param nPointers the number of elements to be stored in this node's
+     *                  pointers array
      */
-    public HeapNode<T> getParent() {
-        return pointers[0] == null ? null : (HeapNode<T>) pointers[0];
+    protected HeapNode(T element, int nPointers) {
+        super(element, nPointers);
     }
 
     /**
-     * Sets the reference stored in this heap node parent pointer.
+     * Constructs a node with an element and an array of pointers.
      * 
-     * @param parent the reference to be stored in this heap node parent pointer
+     * @param element  the element to be stored in this node
+     * @param pointers the pointers to be stored in this node's pointers
+     *                 array
      */
-    public void setParent(HeapNode<T> parent) {
-        pointers[0] = parent;
+    @SuppressWarnings("unchecked")
+    protected HeapNode(T element, Node<T>... pointers) {
+        super(element, pointers);
     }
 
     /**
@@ -98,7 +108,7 @@ public class HeapNode<T> extends Node<T> {
      * @return the reference stored in this heap node left pointer
      */
     public HeapNode<T> getLeft() {
-        return pointers[1] == null ? null : (HeapNode<T>) pointers[1];
+        return (HeapNode<T>) super.getLeft();
     }
 
     /**
@@ -107,7 +117,7 @@ public class HeapNode<T> extends Node<T> {
      * @param left the reference to be stored in this heap node left pointer
      */
     public void setLeft(HeapNode<T> left) {
-        pointers[1] = left;
+        super.setLeft(left);
     }
 
     /**
@@ -116,7 +126,7 @@ public class HeapNode<T> extends Node<T> {
      * @return the reference stored in this heap node right pointer
      */
     public HeapNode<T> getRight() {
-        return pointers[2] == null ? null : (HeapNode<T>) pointers[2];
+        return (HeapNode<T>) super.getRight();
     }
 
     /**
@@ -125,6 +135,24 @@ public class HeapNode<T> extends Node<T> {
      * @param right the reference to be stored in this heap node right pointer
      */
     public void setRight(HeapNode<T> right) {
-        pointers[2] = right;
+        super.setRight(right);
+    }
+
+    /**
+     * Returns the reference stored in this heap node parent pointer.
+     * 
+     * @return the reference stored in this heap node parent pointer
+     */
+    public HeapNode<T> getParent() {
+        return (HeapNode<T>) pointers[2];
+    }
+
+    /**
+     * Sets the reference stored in this heap node parent pointer.
+     * 
+     * @param parent the reference to be stored in this heap node parent pointer
+     */
+    public void setParent(HeapNode<T> parent) {
+        pointers[2] = parent;
     }
 }

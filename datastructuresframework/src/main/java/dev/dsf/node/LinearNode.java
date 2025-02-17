@@ -15,6 +15,10 @@ package dev.dsf.node;
  * element</li>
  * <li>{@link #LinearNode(Object, LinearNode)}: Constructs a linear node with an
  * element and a reference to the next linear node</li>
+ * <li>{@link #LinearNode(Object, int)}: Constructs a node with an
+ * element and an empty array of pointers with a specified size</li>
+ * <li>{@link #LinearNode(Object, Node...)}: Constructs a node with an
+ * element and an array of pointers</li>
  * </ul>
  * 
  * The operations for this {@code LinearNode} include:
@@ -32,13 +36,14 @@ package dev.dsf.node;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
+ * @see DoubleLinearNode
  */
 public class LinearNode<T> extends Node<T> {
     /**
      * Constructs an empty linear node.
      */
     public LinearNode() {
-        this(null);
+        super(null);
     }
 
     /**
@@ -63,12 +68,36 @@ public class LinearNode<T> extends Node<T> {
     }
 
     /**
+     * Constructs a node with an element and an empty array of pointers with
+     * a specified size.
+     * 
+     * @param element   the element to be stored in this node
+     * @param nPointers the number of elements to be stored in this node's
+     *                  pointers array
+     */
+    protected LinearNode(T element, int nPointers) {
+        super(element, nPointers);
+    }
+
+    /**
+     * Constructs a node with an element and an array of pointers.
+     * 
+     * @param element  the element to be stored in this node
+     * @param pointers the pointers to be stored in this node's pointers
+     *                 array
+     */
+    @SuppressWarnings("unchecked")
+    protected LinearNode(T element, Node<T>... pointers) {
+        super(element, pointers);
+    }
+
+    /**
      * Returns the reference stored in this linear node next pointer.
      * 
      * @return the reference stored in this linear node next pointer
      */
     public LinearNode<T> getNext() {
-        return pointers[0] == null ? null : (LinearNode<T>) pointers[0];
+        return (LinearNode<T>) pointers[0];
     }
 
     /**
