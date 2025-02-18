@@ -18,10 +18,6 @@ package dev.dsf.node;
  * Constructs a double linear node with an
  * element, a reference to the next double linear node and a reference to the
  * prev double linear node</li>
- * <li>{@link #DoubleLinearNode(Object, int)}: Constructs a node with an
- * element and an empty array of pointers with a specified size</li>
- * <li>{@link #DoubleLinearNode(Object, Node...)}: Constructs a node with an
- * element and an array of pointers</li>
  * </ul>
  * 
  * The operations for this {@code DoubleLinearNode} include:
@@ -46,7 +42,7 @@ package dev.dsf.node;
  * @version 1.0
  * @author joseafmoreira
  */
-public class DoubleLinearNode<T> extends LinearNode<T> {
+public class DoubleLinearNode<T> extends Node<T> {
     /**
      * Constructs an empty double linear node.
      */
@@ -77,36 +73,12 @@ public class DoubleLinearNode<T> extends LinearNode<T> {
     }
 
     /**
-     * Constructs a node with an element and an empty array of pointers with
-     * a specified size.
-     * 
-     * @param element   the element to be stored in this node
-     * @param nPointers the number of elements to be stored in this node's
-     *                  pointers array
-     */
-    protected DoubleLinearNode(T element, int nPointers) {
-        super(element, nPointers);
-    }
-
-    /**
-     * Constructs a node with an element and an array of pointers.
-     * 
-     * @param element  the element to be stored in this node
-     * @param pointers the pointers to be stored in this node's pointers
-     *                 array
-     */
-    @SuppressWarnings("unchecked")
-    protected DoubleLinearNode(T element, Node<T>... pointers) {
-        super(element, pointers);
-    }
-
-    /**
      * Returns the reference stored in this double linear node next pointer.
      * 
      * @return the reference stored in this double linear node next pointer
      */
     public DoubleLinearNode<T> getNext() {
-        return (DoubleLinearNode<T>) super.getNext();
+        return pointers[0] == null ? null : (DoubleLinearNode<T>) pointers[0];
     }
 
     /**
@@ -116,7 +88,7 @@ public class DoubleLinearNode<T> extends LinearNode<T> {
      *             pointer
      */
     public void setNext(DoubleLinearNode<T> next) {
-        super.setNext(next);
+        pointers[0] = next;
     }
 
     /**
@@ -125,7 +97,7 @@ public class DoubleLinearNode<T> extends LinearNode<T> {
      * @return the reference stored in this double linear node prev pointer
      */
     public DoubleLinearNode<T> getPrev() {
-        return (DoubleLinearNode<T>) pointers[1];
+        return pointers[1] == null ? null : (DoubleLinearNode<T>) pointers[1];
     }
 
     /**

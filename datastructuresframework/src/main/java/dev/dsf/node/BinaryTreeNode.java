@@ -17,10 +17,6 @@ package dev.dsf.node;
  * <li>{@link #BinaryTreeNode(Object, BinaryTreeNode, BinaryTreeNode)}:
  * Constructs a binary tree node with an element, a reference to the left binary
  * tree node and a reference to the right binary tree</li>
- * <li>{@link #BinaryTreeNode(Object, int)}: Constructs a node with an
- * element and an empty array of pointers with a specified size</li>
- * <li>{@link #BinaryTreeNode(Object, Node...)}: Constructs a node with an
- * element and an array of pointers</li>
  * </ul>
  * 
  * The operations for this {@code BinaryTreeNode} include:
@@ -42,7 +38,6 @@ package dev.dsf.node;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
- * @see HeapNode
  */
 public class BinaryTreeNode<T> extends Node<T> {
     /**
@@ -75,36 +70,12 @@ public class BinaryTreeNode<T> extends Node<T> {
     }
 
     /**
-     * Constructs a node with an element and an empty array of pointers with
-     * a specified size.
-     * 
-     * @param element   the element to be stored in this node
-     * @param nPointers the number of elements to be stored in this node's
-     *                  pointers array
-     */
-    protected BinaryTreeNode(T element, int nPointers) {
-        super(element, nPointers);
-    }
-
-    /**
-     * Constructs a node with an element and an array of pointers.
-     * 
-     * @param element  the element to be stored in this node
-     * @param pointers the pointers to be stored in this node's pointers
-     *                 array
-     */
-    @SuppressWarnings("unchecked")
-    protected BinaryTreeNode(T element, Node<T>... pointers) {
-        super(element, pointers);
-    }
-
-    /**
      * Returns the reference stored in this binary tree node left pointer.
      * 
      * @return the reference stored in this binary tree node left pointer
      */
     public BinaryTreeNode<T> getLeft() {
-        return (BinaryTreeNode<T>) pointers[0];
+        return pointers[0] == null ? null : (BinaryTreeNode<T>) pointers[0];
     }
 
     /**
@@ -123,7 +94,7 @@ public class BinaryTreeNode<T> extends Node<T> {
      * @return the reference stored in this binary tree node right pointer
      */
     public BinaryTreeNode<T> getRight() {
-        return (BinaryTreeNode<T>) pointers[1];
+        return pointers[1] == null ? null : (BinaryTreeNode<T>) pointers[1];
     }
 
     /**
