@@ -2,7 +2,6 @@ package dev.dsf.datastructure.list.ordered;
 
 import dev.dsf.abstractdatatype.OrderedListADT;
 import dev.dsf.datastructure.list.LinkedList;
-import dev.dsf.node.LinearNode;
 
 /**
  * Singly-linked list implementation of the {@code OrderedListADT} interface

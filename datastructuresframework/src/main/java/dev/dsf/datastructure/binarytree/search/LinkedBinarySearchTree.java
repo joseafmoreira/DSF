@@ -3,7 +3,6 @@ package dev.dsf.datastructure.binarytree.search;
 import dev.dsf.abstractdatatype.BinarySearchTreeADT;
 import dev.dsf.datastructure.binarytree.LinkedBinaryTree;
 import dev.dsf.exception.EmptyCollectionException;
-import dev.dsf.node.BinaryTreeNode;
 
 /**
  * Linked implementation of the {@code BinarySearchTreeADT} interface

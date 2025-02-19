@@ -1,8 +1,7 @@
 package dev.dsf.node;
 
 /**
- * A node is an auxiliary object used to store an element and an array of
- * pointers.
+ * A node is an auxiliary object used to store an element.
  * <p>
  * 
  * The available constructors are the following:
@@ -10,10 +9,6 @@ package dev.dsf.node;
  * <ul>
  * <li>{@link #Node()}: Constructs an empty node</li>
  * <li>{@link #Node(Object)}: Constructs a node with an element</li>
- * <li>{@link #Node(Object, int)}: Constructs a node with an element and an
- * empty array of pointers with a specified size</li>
- * <li>{@link #Node(Object, Node...)}: Constructs a node with an element and an
- * array of pointers</li>
  * </ul>
  * 
  * The operations for this {@code Node} include:
@@ -37,11 +32,6 @@ package dev.dsf.node;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
- * @see GenericNode
- * @see LinearNode
- * @see DoubleLinearNode
- * @see BinaryTreeNode
- * @see HeapNode
  */
 public abstract class Node<T> {
     /**
@@ -52,10 +42,6 @@ public abstract class Node<T> {
      * The element stored in this node
      */
     protected T element;
-    /**
-     * The array containing the pointers stored in this node
-     */
-    protected Node<T>[] pointers;
 
     /**
      * Constructs an empty node.
@@ -70,35 +56,7 @@ public abstract class Node<T> {
      * @param element the element to be stored in this node
      */
     protected Node(T element) {
-        this(element, 0);
-    }
-
-    /**
-     * Constructs a node with an element and an empty array of pointers with a
-     * specified size.
-     * 
-     * @param element   the element to be stored in this node
-     * @param nPointers the number of elements to be stored in this node's pointers
-     *                  array
-     */
-    @SuppressWarnings("unchecked")
-    protected Node(T element, int nPointers) {
         setElement(element);
-        pointers = (Node<T>[]) new Node[nPointers];
-    }
-
-    /**
-     * Constructs a node with an element and an array of pointers.
-     * 
-     * @param element  the element to be stored in this node
-     * @param pointers the pointers to be stored in this node's pointers array
-     */
-    @SuppressWarnings("unchecked")
-    protected Node(T element, Node<T>... pointers) {
-        this(element, pointers.length);
-        int i = 0;
-        for (Node<T> pointer : pointers)
-            this.pointers[i++] = pointer;
     }
 
     /**
