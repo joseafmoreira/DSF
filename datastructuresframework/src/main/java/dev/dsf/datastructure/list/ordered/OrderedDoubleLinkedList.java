@@ -5,8 +5,7 @@ import dev.dsf.datastructure.list.DoubleLinkedList;
 import dev.dsf.node.DoubleLinearNode;
 
 /**
- * Doubly-linked list implementation of the {@code OrderedListADT} interface
- * using the {@code DoubleLinkedList} abstract class as a base code.
+ * Doubly-linked list implementation of the {@code OrderedListADT} interface.
  * 
  * <h3>OrderedDoubleLinkedList</h3>
  * 
@@ -17,7 +16,7 @@ import dev.dsf.node.DoubleLinearNode;
  */
 public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements OrderedListADT<T> {
     /**
-     * Constructs an empty ordered double linked list.
+     * Constructs an empty list.
      */
     public OrderedDoubleLinkedList() {
         super();

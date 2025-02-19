@@ -29,7 +29,7 @@ public abstract class ArrayBinaryTree<T> extends AbstractIterableCollection<T> i
     /**
      * The list containing the elements of this collection
      */
-    protected UnorderedListADT<T> list;
+    protected UnorderedArrayList<T> list;
 
     /**
      * Constructs an empty binary tree.

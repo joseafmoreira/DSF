@@ -6,8 +6,7 @@ import dev.dsf.datastructure.list.ArrayList;
 import dev.dsf.exception.EmptyCollectionException;
 
 /**
- * Resizable-array implementation of the {@code OrderedListADT} interface
- * using the {@code ArrayList} abstract class as a base code.
+ * Resizable-array implementation of the {@code OrderedListADT} interface.
  * 
  * <h3>OrderedArrayList</h3>
  * 
@@ -18,14 +17,14 @@ import dev.dsf.exception.EmptyCollectionException;
  */
 public class OrderedArrayList<T> extends ArrayList<T> implements OrderedListADT<T> {
     /**
-     * Constructs an empty OrderedArrayList with a default capacity.
+     * Constructs an empty list with a default capacity.
      */
     public OrderedArrayList() {
         super();
     }
 
     /**
-     * Constructs an empty OrderedArrayList with a specified initial capacity.
+     * Constructs an empty list with a specified initial capacity.
      * 
      * @param initialCapacity the initial capacity (Minimum value is 0)
      */

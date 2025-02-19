@@ -18,12 +18,11 @@ package dev.dsf.node;
  * with an element and a priority</li>
  * </ul>
  * 
- * The operations for this {@code MinPriorityQueueNode} include:
+ * The operations for this {@code PriorityQueueNode} include:
  * <p>
  * <ul>
  * <li>{@link #compareTo(PriorityQueueNode)}: Compares this priority queue node
- * with the
- * specified priority queue node for order</li>
+ * with the specified priority queue node for order</li>
  * </ul>
  * 
  * <h3>PriorityQueueNode</h3>
@@ -32,10 +31,8 @@ package dev.dsf.node;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
- * @see MinPriorityQueueNode
- * @see MaxPriorityQueueNode
  */
-public abstract class PriorityQueueNode<T> extends Node<T> implements Comparable<PriorityQueueNode<T>> {
+public class PriorityQueueNode<T> extends Node<T> implements Comparable<PriorityQueueNode<T>> {
     /**
      * The order of the next instantiated priority queue node
      */
@@ -52,7 +49,7 @@ public abstract class PriorityQueueNode<T> extends Node<T> implements Comparable
     /**
      * Constructs an empty priority queue node.
      */
-    protected PriorityQueueNode() {
+    public PriorityQueueNode() {
         this(null);
     }
 
@@ -61,7 +58,7 @@ public abstract class PriorityQueueNode<T> extends Node<T> implements Comparable
      * 
      * @param element the element to be stored in this priority queue node
      */
-    protected PriorityQueueNode(T element) {
+    public PriorityQueueNode(T element) {
         this(element, 0);
     }
 
@@ -71,7 +68,7 @@ public abstract class PriorityQueueNode<T> extends Node<T> implements Comparable
      * @param element  the element to be stored in this priority queue node
      * @param priority the priority associated with this priority queue node
      */
-    protected PriorityQueueNode(T element, int priority) {
+    public PriorityQueueNode(T element, int priority) {
         super(element);
         this.priority = priority;
         this.order = NEXT_ORDER++;
@@ -87,5 +84,16 @@ public abstract class PriorityQueueNode<T> extends Node<T> implements Comparable
      *         priority queue node.
      */
     @Override
-    public abstract int compareTo(PriorityQueueNode<T> o);
+    public int compareTo(PriorityQueueNode<T> o) {
+        int result = 0;
+        if (priority > o.priority)
+            result = 1;
+        else if (priority < o.priority)
+            result = -1;
+        else if (order > o.order)
+            result = 1;
+        else if (order < o.order)
+            result = -1;
+        return result;
+    }
 }

@@ -5,8 +5,7 @@ import dev.dsf.datastructure.list.LinkedList;
 import dev.dsf.node.LinearNode;
 
 /**
- * Singly-linked list implementation of the {@code OrderedListADT} interface
- * using the {@code LinkedList} abstract class as a base code.
+ * Singly-linked list implementation of the {@code OrderedListADT} interface.
  * 
  * <h3>OrderedLinkedList</h3>
  * 
@@ -17,7 +16,7 @@ import dev.dsf.node.LinearNode;
  */
 public class OrderedLinkedList<T> extends LinkedList<T> implements OrderedListADT<T> {
     /**
-     * Constructs an empty ordered linked list.
+     * Constructs an empty list.
      */
     public OrderedLinkedList() {
         super();
