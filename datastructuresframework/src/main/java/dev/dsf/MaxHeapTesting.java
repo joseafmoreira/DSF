@@ -2,12 +2,13 @@ package dev.dsf;
 
 import dev.dsf.abstractdatatype.MaxHeapADT;
 import dev.dsf.datastructure.binarytree.heap.ArrayMaxHeap;
+import dev.dsf.datastructure.binarytree.heap.LinkedMaxHeap;
 
 public class MaxHeapTesting extends CollectionTesting {
     private static final boolean isArray = true;
 
     public static void main(String[] args) {
-        MaxHeapADT<Integer> heap = new ArrayMaxHeap<>();
+        MaxHeapADT<Integer> heap = (isArray ? new ArrayMaxHeap<>() : new LinkedMaxHeap<>());
         Class(heap);
 
         heap.add(2);
