@@ -51,6 +51,21 @@ public interface HeapADT<T> extends BinaryTreeADT<T> {
     void add(T element);
 
     /**
+     * {@inheritDoc}
+     * 
+     * @throws NullPointerException if the specified target is null
+     */
+    @Override
+    default boolean contains(T target) {
+        if (target == null)
+            throw new NullPointerException("Target is null");
+        for (T element : this)
+            if (element.equals(target))
+                return true;
+        return false;
+    }
+
+    /**
      * Returns an iterator over the element of this heap.
      * 
      * @return an iterator over the element of this heap

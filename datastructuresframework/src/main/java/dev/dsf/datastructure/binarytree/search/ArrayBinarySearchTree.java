@@ -26,7 +26,7 @@ public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements Bina
         Comparable<T> comparableElement = (Comparable<T>) element;
         int index = 0;
         if (isEmpty())
-            list.addLast(element);
+            list.addFirst(element);
         else {
             while (true) {
                 index = index * 2 + (comparableElement.compareTo(list.get(index)) <= 0 ? 1 : 2);
