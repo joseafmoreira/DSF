@@ -29,7 +29,7 @@ public class MaxPriorityQueueNode<T> extends PriorityQueueNode<T> {
     /**
      * Constructs an empty priority queue node.
      */
-    protected MaxPriorityQueueNode() {
+    public MaxPriorityQueueNode() {
         this(null);
     }
 
@@ -38,7 +38,7 @@ public class MaxPriorityQueueNode<T> extends PriorityQueueNode<T> {
      * 
      * @param element the element to be stored in this priority queue node
      */
-    protected MaxPriorityQueueNode(T element) {
+    public MaxPriorityQueueNode(T element) {
         this(element, 0);
     }
 
@@ -48,7 +48,7 @@ public class MaxPriorityQueueNode<T> extends PriorityQueueNode<T> {
      * @param element  the element to be stored in this priority queue node
      * @param priority the priority associated with this priority queue node
      */
-    protected MaxPriorityQueueNode(T element, int priority) {
+    public MaxPriorityQueueNode(T element, int priority) {
         super(element, priority);
     }
 

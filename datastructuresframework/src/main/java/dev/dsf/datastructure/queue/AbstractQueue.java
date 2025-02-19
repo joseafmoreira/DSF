@@ -1,7 +1,7 @@
 package dev.dsf.datastructure.queue;
 
 import dev.dsf.abstractdatatype.QueueADT;
-import dev.dsf.datastructure.collection.AbstractListBasedCollection;
+import dev.dsf.abstractdatatype.UnorderedListADT;
 import dev.dsf.exception.EmptyCollectionException;
 
 /**
@@ -18,13 +18,11 @@ import dev.dsf.exception.EmptyCollectionException;
  * @see ArrayQueue
  * @see LinkedQueue
  */
-public abstract class AbstractQueue<T> extends AbstractListBasedCollection<T> implements QueueADT<T> {
+public abstract class AbstractQueue<T> implements QueueADT<T> {
     /**
-     * Constructs an empty queue.
+     * The list containing the elements of this collection
      */
-    protected AbstractQueue() {
-        super();
-    }
+    protected UnorderedListADT<T> list;
 
     /**
      * {@inheritDoc}
@@ -52,5 +50,45 @@ public abstract class AbstractQueue<T> extends AbstractListBasedCollection<T> im
     @Override
     public T dequeue() {
         return list.removeFirst();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void clear() {
+        list.clear();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int size() {
+        return list.size();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(Object obj) {
+        return list.equals(obj);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int hashCode() {
+        return list.hashCode();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return list.toString();
     }
 }

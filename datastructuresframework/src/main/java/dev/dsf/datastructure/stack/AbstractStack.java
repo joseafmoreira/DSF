@@ -1,7 +1,7 @@
 package dev.dsf.datastructure.stack;
 
 import dev.dsf.abstractdatatype.StackADT;
-import dev.dsf.datastructure.collection.AbstractListBasedCollection;
+import dev.dsf.abstractdatatype.UnorderedListADT;
 import dev.dsf.exception.EmptyCollectionException;
 
 /**
@@ -18,13 +18,11 @@ import dev.dsf.exception.EmptyCollectionException;
  * @see ArrayStack
  * @see LinkedStack
  */
-public abstract class AbstractStack<T> extends AbstractListBasedCollection<T> implements StackADT<T> {
+public abstract class AbstractStack<T> implements StackADT<T> {
     /**
-     * Constructs an empty stack.
+     * The list containing the elements of this collection
      */
-    protected AbstractStack() {
-        super();
-    }
+    protected UnorderedListADT<T> list;
 
     /**
      * {@inheritDoc}
@@ -52,5 +50,45 @@ public abstract class AbstractStack<T> extends AbstractListBasedCollection<T> im
     @Override
     public T pop() {
         return list.removeLast();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void clear() {
+        list.clear();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int size() {
+        return list.size();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(Object obj) {
+        return list.equals(obj);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int hashCode() {
+        return list.hashCode();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return list.toString();
     }
 }

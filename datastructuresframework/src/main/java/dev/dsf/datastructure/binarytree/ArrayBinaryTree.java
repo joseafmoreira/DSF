@@ -1,14 +1,13 @@
 package dev.dsf.datastructure.binarytree;
 
 import java.util.Iterator;
-import java.util.StringJoiner;
 
 import dev.dsf.abstractdatatype.BinaryTreeADT;
 import dev.dsf.abstractdatatype.QueueADT;
 import dev.dsf.abstractdatatype.UnorderedListADT;
 import dev.dsf.datastructure.binarytree.heap.ArrayHeap;
 import dev.dsf.datastructure.binarytree.search.ArrayBinarySearchTree;
-import dev.dsf.datastructure.collection.AbstractListBasedCollection;
+import dev.dsf.datastructure.collection.AbstractIterableCollection;
 import dev.dsf.datastructure.list.unordered.UnorderedArrayList;
 import dev.dsf.datastructure.list.unordered.UnorderedLinkedList;
 import dev.dsf.datastructure.queue.LinkedQueue;
@@ -26,12 +25,17 @@ import dev.dsf.exception.EmptyCollectionException;
  * @see ArrayBinarySearchTree
  * @see ArrayHeap
  */
-public abstract class ArrayBinaryTree<T> extends AbstractListBasedCollection<T> implements BinaryTreeADT<T> {
+public abstract class ArrayBinaryTree<T> extends AbstractIterableCollection<T> implements BinaryTreeADT<T> {
+    /**
+     * The list containing the elements of this collection
+     */
+    protected UnorderedListADT<T> list;
+
     /**
      * Constructs an empty binary tree.
      */
     protected ArrayBinaryTree() {
-        super(false);
+        super();
         list = new UnorderedArrayList<>();
     }
 
@@ -45,6 +49,15 @@ public abstract class ArrayBinaryTree<T> extends AbstractListBasedCollection<T> 
         if (isEmpty())
             throw new EmptyCollectionException("Binary tree is empty");
         return list.get(0);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void clear() {
+        super.clear();
+        list.clear();
     }
 
     /**
@@ -101,17 +114,6 @@ public abstract class ArrayBinaryTree<T> extends AbstractListBasedCollection<T> 
             }
         }
         return list.iterator();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String toString() {
-        StringJoiner message = new StringJoiner(", ", "[", "]");
-        for (T element : this)
-            message.add(element.toString());
-        return message.toString();
     }
 
     /**

@@ -29,7 +29,7 @@ public class MinPriorityQueueNode<T> extends PriorityQueueNode<T> {
     /**
      * Constructs an empty priority queue node.
      */
-    protected MinPriorityQueueNode() {
+    public MinPriorityQueueNode() {
         this(null);
     }
 
@@ -38,7 +38,7 @@ public class MinPriorityQueueNode<T> extends PriorityQueueNode<T> {
      * 
      * @param element the element to be stored in this priority queue node
      */
-    protected MinPriorityQueueNode(T element) {
+    public MinPriorityQueueNode(T element) {
         this(element, 0);
     }
 
@@ -48,7 +48,7 @@ public class MinPriorityQueueNode<T> extends PriorityQueueNode<T> {
      * @param element  the element to be stored in this priority queue node
      * @param priority the priority associated with this priority queue node
      */
-    protected MinPriorityQueueNode(T element, int priority) {
+    public MinPriorityQueueNode(T element, int priority) {
         super(element, priority);
     }
 
