@@ -2,6 +2,8 @@ package dev.dsf.datastructure.binarytree.heap;
 
 import dev.dsf.abstractdatatype.HeapADT;
 import dev.dsf.datastructure.binarytree.ArrayBinaryTree;
+import dev.dsf.datastructure.binarytree.heap.max.ArrayMaxHeap;
+import dev.dsf.datastructure.binarytree.heap.min.ArrayMinHeap;
 
 /**
  * This class provides a skeletal implemetation for a resizable-array list-based

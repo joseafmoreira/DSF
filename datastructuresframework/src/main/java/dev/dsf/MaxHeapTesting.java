@@ -1,8 +1,8 @@
 package dev.dsf;
 
 import dev.dsf.abstractdatatype.MaxHeapADT;
-import dev.dsf.datastructure.binarytree.heap.ArrayMaxHeap;
-import dev.dsf.datastructure.binarytree.heap.LinkedMaxHeap;
+import dev.dsf.datastructure.binarytree.heap.max.ArrayMaxHeap;
+import dev.dsf.datastructure.binarytree.heap.max.LinkedMaxHeap;
 
 public class MaxHeapTesting extends CollectionTesting {
     private static final boolean isArray = true;

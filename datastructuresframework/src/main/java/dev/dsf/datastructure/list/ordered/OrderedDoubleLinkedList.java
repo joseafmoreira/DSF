@@ -2,6 +2,7 @@ package dev.dsf.datastructure.list.ordered;
 
 import dev.dsf.abstractdatatype.OrderedListADT;
 import dev.dsf.datastructure.list.DoubleLinkedList;
+import dev.dsf.node.DoubleLinearNode;
 
 /**
  * Doubly-linked list implementation of the {@code OrderedListADT} interface

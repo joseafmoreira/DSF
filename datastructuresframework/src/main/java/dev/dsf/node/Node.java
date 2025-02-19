@@ -32,6 +32,9 @@ package dev.dsf.node;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
+ * @see LinearNode
+ * @see BinaryTreeNode
+ * @see PriorityQueueNode
  */
 public abstract class Node<T> {
     /**

@@ -7,9 +7,8 @@ import dev.dsf.datastructure.list.unordered.UnorderedLinkedList;
 
 public abstract class UnorderedListTesting extends ListTesting {
     public static void main(String[] args) {
-        UnorderedListADT<Integer> list = getInstance(Type.LINKED);
+        UnorderedListADT<Integer> list = getInstance(Type.DLINKED);
         Class(list);
-        System.out.println("List class: " + list.getClass());
 
         list.addLast(1);
         list.addLast(3);

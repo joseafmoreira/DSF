@@ -1,8 +1,8 @@
 package dev.dsf;
 
 import dev.dsf.abstractdatatype.MinHeapADT;
-import dev.dsf.datastructure.binarytree.heap.ArrayMinHeap;
-import dev.dsf.datastructure.binarytree.heap.LinkedMinHeap;
+import dev.dsf.datastructure.binarytree.heap.min.ArrayMinHeap;
+import dev.dsf.datastructure.binarytree.heap.min.LinkedMinHeap;
 
 public class MinHeapTesting extends CollectionTesting {
     private static final boolean isArray = true;

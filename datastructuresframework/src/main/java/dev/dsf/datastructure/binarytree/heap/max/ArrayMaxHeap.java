@@ -1,19 +1,20 @@
-package dev.dsf.datastructure.binarytree.heap;
+package dev.dsf.datastructure.binarytree.heap.max;
 
-import dev.dsf.abstractdatatype.MinHeapADT;
+import dev.dsf.abstractdatatype.MaxHeapADT;
+import dev.dsf.datastructure.binarytree.heap.ArrayHeap;
 import dev.dsf.exception.EmptyCollectionException;
 
 /**
- * Resizable-array implementation of the {@code MinHeapADT} interface.
+ * Resizable-array implementation of the {@code MaxHeapADT} interface.
  * 
- * <h3>ArrayMinHeap</h3>
+ * <h3>ArrayMaxHeap</h3>
  * 
  * @param <T> the type of element stored in this heap
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
  */
-public class ArrayMinHeap<T> extends ArrayHeap<T> implements MinHeapADT<T> {
+public class ArrayMaxHeap<T> extends ArrayHeap<T> implements MaxHeapADT<T> {
     /**
      * {@inheritDoc}
      * 
@@ -48,8 +49,8 @@ public class ArrayMinHeap<T> extends ArrayHeap<T> implements MinHeapADT<T> {
      * @throws EmptyCollectionException {@inheritDoc}
      */
     @Override
-    public T removeMin() {
-        T result = findMin();
+    public T removeMax() {
+        T result = findMax();
         if (size() == 1) {
             list.set(0, null);
             lastIndex = -1;
@@ -64,10 +65,10 @@ public class ArrayMinHeap<T> extends ArrayHeap<T> implements MinHeapADT<T> {
     }
 
     /**
-     * Performs heapify operation after adding a new element to the min-heap.
+     * Performs heapify operation after adding a new element to the max-heap.
      * This method ensures that the heap property is maintained by comparing the new
      * element with its parent.
-     * If the new element is smaller than its parent, it is swapped with its parent
+     * If the new element is bigger than its parent, it is swapped with its parent
      * and the process is repeated until the heap property is satisfied.
      * 
      * @throws ClassCastException if the element isn't comparable
@@ -77,7 +78,7 @@ public class ArrayMinHeap<T> extends ArrayHeap<T> implements MinHeapADT<T> {
         int nextNodeIndex = lastIndex;
         T temp = list.get(nextNodeIndex);
         while (nextNodeIndex != 0 && list.get((nextNodeIndex - 1) / 2) != null
-                && ((Comparable<T>) temp).compareTo(list.get((nextNodeIndex - 1) / 2)) < 0) {
+                && ((Comparable<T>) temp).compareTo(list.get((nextNodeIndex - 1) / 2)) > 0) {
             list.set(nextNodeIndex, list.get((nextNodeIndex - 1) / 2));
             nextNodeIndex = (nextNodeIndex - 1) / 2;
         }
@@ -85,9 +86,9 @@ public class ArrayMinHeap<T> extends ArrayHeap<T> implements MinHeapADT<T> {
     }
 
     /**
-     * Performs the heapify operation after removing an element from this min-heap.
-     * This operation ensures that the min-heap property is maintained by moving
-     * elements down this min-heap.
+     * Performs the heapify operation after removing an element from this max-heap.
+     * This operation ensures that the max-heap property is maintained by moving
+     * elements down this max-heap.
      */
     @SuppressWarnings("unchecked")
     private void heapifyRemove() {
@@ -97,10 +98,10 @@ public class ArrayMinHeap<T> extends ArrayHeap<T> implements MinHeapADT<T> {
             int rightIndex = currentIndex * 2 + 2;
             int smallestIndex = currentIndex;
             if (leftIndex <= lastIndex && list.get(leftIndex) != null &&
-                    ((Comparable<T>) list.get(leftIndex)).compareTo(list.get(smallestIndex)) < 0)
+                    ((Comparable<T>) list.get(leftIndex)).compareTo(list.get(smallestIndex)) > 0)
                 smallestIndex = leftIndex;
             if (rightIndex <= lastIndex && list.get(rightIndex) != null &&
-                    ((Comparable<T>) list.get(rightIndex)).compareTo(list.get(smallestIndex)) < 0)
+                    ((Comparable<T>) list.get(rightIndex)).compareTo(list.get(smallestIndex)) > 0)
                 smallestIndex = rightIndex;
             if (smallestIndex != currentIndex) {
                 T swap = list.get(currentIndex);

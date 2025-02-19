@@ -4,6 +4,7 @@ import dev.dsf.abstractdatatype.UnorderedListADT;
 import dev.dsf.algorithm.sort.MergeSort;
 import dev.dsf.datastructure.list.LinkedList;
 import dev.dsf.exception.EmptyCollectionException;
+import dev.dsf.node.LinearNode;
 
 /**
  * Singly-linked list implementation of the {@code UnorderedListADT} interface
