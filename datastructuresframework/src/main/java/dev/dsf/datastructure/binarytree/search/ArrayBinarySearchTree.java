@@ -4,14 +4,17 @@ import dev.dsf.abstractdatatype.BinarySearchTreeADT;
 import dev.dsf.datastructure.binarytree.ArrayBinaryTree;
 import dev.dsf.exception.EmptyCollectionException;
 
+/**
+ * Resizable-array implementation of the {@code BinarySearchTreeADT} interface.
+ * 
+ * <h3>ArrayBinarySearchTree</h3>
+ * 
+ * @param <T> the type of element stored in this binary tree
+ * @since 1.0
+ * @version 1.0
+ * @author joseafmoreira
+ */
 public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements BinarySearchTreeADT<T> {
-    /**
-     * Constructs an empty binary search tree.
-     */
-    public ArrayBinarySearchTree() {
-        super();
-    }
-
     /**
      * {@inheritDoc}
      * 

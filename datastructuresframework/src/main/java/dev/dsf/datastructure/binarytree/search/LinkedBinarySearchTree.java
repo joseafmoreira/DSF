@@ -5,8 +5,7 @@ import dev.dsf.datastructure.binarytree.LinkedBinaryTree;
 import dev.dsf.exception.EmptyCollectionException;
 
 /**
- * Linked implementation of the {@code BinarySearchTreeADT} interface
- * using the {@code LinkedBinaryTree} class as a base code.
+ * Linked implementation of the {@code BinarySearchTreeADT} interface.
  * 
  * <h3>LinkedBinarySearchTree</h3>
  * 
@@ -16,13 +15,6 @@ import dev.dsf.exception.EmptyCollectionException;
  * @author joseafmoreira
  */
 public class LinkedBinarySearchTree<T> extends LinkedBinaryTree<T> implements BinarySearchTreeADT<T> {
-    /**
-     * Constructs an empty binary search tree.
-     */
-    public LinkedBinarySearchTree() {
-        super();
-    }
-
     /**
      * {@inheritDoc}
      * 

@@ -17,7 +17,7 @@ import dev.dsf.exception.EmptyCollectionException;
 /**
  * Resizable-array list implementation of the {@code BinaryTreeADT} interface.
  * 
- * <h3>LinkedBinaryTree</h3>
+ * <h3>ArrayBinaryTree</h3>
  * 
  * @param <T> the type of element stored in this binary tree
  * @since 1.0
