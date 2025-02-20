@@ -1,6 +1,9 @@
 package dev.dsf.datastructure.priorityqueue.heap.min;
 
+import java.util.StringJoiner;
+
 import dev.dsf.abstractdatatype.binarytree.MinHeapADT;
+import dev.dsf.datastructure.list.ordered.OrderedArrayList;
 import dev.dsf.datastructure.priorityqueue.heap.AbstractHeapPriorityQueue;
 import dev.dsf.exception.EmptyCollectionException;
 import dev.dsf.node.PriorityQueueNode;
@@ -42,5 +45,14 @@ public abstract class AbstractHeapMinPriorityQueue<T, C extends MinHeapADT<Prior
     @Override
     public T dequeue() {
         return collection.removeMin().getElement();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void toStringGenerator(OrderedArrayList<PriorityQueueNode<T>> list, StringJoiner message) {
+        for (int i = 0; i < size(); i++)
+            message.add(list.get(i).getElement() == null ? "null" : list.get(i).toString());
     }
 }

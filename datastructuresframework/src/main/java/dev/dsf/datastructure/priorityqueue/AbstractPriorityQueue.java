@@ -5,6 +5,7 @@ import java.util.StringJoiner;
 
 import dev.dsf.abstractdatatype.PriorityQueueADT;
 import dev.dsf.abstractdatatype.collection.IterableCollectionADT;
+import dev.dsf.datastructure.list.ordered.OrderedArrayList;
 import dev.dsf.datastructure.priorityqueue.binarysearchtree.AbstractBinarySearchTreePriorityQueue;
 import dev.dsf.datastructure.priorityqueue.heap.AbstractHeapPriorityQueue;
 import dev.dsf.datastructure.priorityqueue.orderedlist.AbstractOrderedListPriorityQueue;
@@ -86,9 +87,21 @@ public abstract class AbstractPriorityQueue<T, C extends IterableCollectionADT<P
      */
     @Override
     public String toString() {
-        StringJoiner message = new StringJoiner(", ", "[", "]");
+        OrderedArrayList<PriorityQueueNode<T>> list = new OrderedArrayList<>(size());
         for (PriorityQueueNode<T> node : collection)
-            message.add(node.getElement() == null ? "null" : node.toString());
+            list.add(node);
+        StringJoiner message = new StringJoiner(", ", "[", "]");
+        toStringGenerator(list, message);
         return message.toString();
     }
+
+    /**
+     * Generate a string representation of this priority queue based on it's
+     * properties.
+     * 
+     * @param list    the specified list where all priority queue nodes are stored
+     * @param message the specified message to store the string representation of
+     *                this priority queue
+     */
+    protected abstract void toStringGenerator(OrderedArrayList<PriorityQueueNode<T>> list, StringJoiner message);
 }

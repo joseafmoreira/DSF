@@ -19,6 +19,7 @@ public abstract class MinPriorityQueueTesting extends PriorityQueueTesting {
 
         priorityQueue.enqueue(2, 1);
         priorityQueue.enqueue(1, 0);
+        priorityQueue.enqueue(3, 1);
         Collection(priorityQueue);
 
         System.out.println("Root element: " + priorityQueue.first());

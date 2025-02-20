@@ -1,6 +1,9 @@
 package dev.dsf.datastructure.priorityqueue.orderedlist.min;
 
+import java.util.StringJoiner;
+
 import dev.dsf.abstractdatatype.list.OrderedListADT;
+import dev.dsf.datastructure.list.ordered.OrderedArrayList;
 import dev.dsf.datastructure.priorityqueue.orderedlist.AbstractOrderedListPriorityQueue;
 import dev.dsf.exception.EmptyCollectionException;
 import dev.dsf.node.PriorityQueueNode;
@@ -43,5 +46,14 @@ public abstract class AbstractOrderedListMinPriorityQueue<T, C extends OrderedLi
     @Override
     public T dequeue() {
         return collection.removeFirst().getElement();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void toStringGenerator(OrderedArrayList<PriorityQueueNode<T>> list, StringJoiner message) {
+        for (int i = 0; i < size(); i++)
+            message.add(list.get(i).getElement() == null ? "null" : list.get(i).toString());
     }
 }

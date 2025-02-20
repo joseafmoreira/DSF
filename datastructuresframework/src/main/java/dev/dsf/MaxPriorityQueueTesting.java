@@ -14,11 +14,12 @@ import dev.dsf.datastructure.priorityqueue.unorderedlist.max.UnorderedLinkedList
 
 public abstract class MaxPriorityQueueTesting extends PriorityQueueTesting {
     public static void main(String[] args) {
-        PriorityQueueADT<Integer> priorityQueue = getInstance(Type.UNORDEREDARRAYLIST);
+        PriorityQueueADT<Integer> priorityQueue = getInstance(Type.UNORDEREDDLINKEDLIST);
         Class(priorityQueue);
 
         priorityQueue.enqueue(2, 1);
         priorityQueue.enqueue(1, 0);
+        priorityQueue.enqueue(3, 1);
         Collection(priorityQueue);
 
         System.out.println("Root element: " + priorityQueue.first());
