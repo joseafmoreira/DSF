@@ -2,8 +2,8 @@ package dev.dsf.datastructure.priorityqueue.orderedlist;
 
 import dev.dsf.abstractdatatype.OrderedListADT;
 import dev.dsf.datastructure.priorityqueue.AbstractPriorityQueue;
-import dev.dsf.datastructure.priorityqueue.orderedlist.max.AbstractOrderedMaxPriorityQueue;
-import dev.dsf.datastructure.priorityqueue.orderedlist.min.AbstractOrderedMinPriorityQueue;
+import dev.dsf.datastructure.priorityqueue.orderedlist.max.AbstractOrderedListMaxPriorityQueue;
+import dev.dsf.datastructure.priorityqueue.orderedlist.min.AbstractOrderedListMinPriorityQueue;
 import dev.dsf.node.PriorityQueueNode;
 
 /**
@@ -20,8 +20,8 @@ import dev.dsf.node.PriorityQueueNode;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
- * @see AbstractOrderedMinPriorityQueue
- * @see AbstractOrderedMaxPriorityQueue
+ * @see AbstractOrderedListMinPriorityQueue
+ * @see AbstractOrderedListMaxPriorityQueue
  */
 public abstract class AbstractOrderedListPriorityQueue<T, C extends OrderedListADT<PriorityQueueNode<T>>>
         extends AbstractPriorityQueue<T, C> {

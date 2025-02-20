@@ -4,7 +4,7 @@ import dev.dsf.datastructure.binarytree.heap.max.LinkedMaxHeap;
 import dev.dsf.node.PriorityQueueNode;
 
 /**
- * Max-heap implementation of the {@code PriorityQueueADT} interface.
+ * Linked max-heap implementation of the {@code PriorityQueueADT} interface.
  * 
  * <h3>LinkedHeapMaxPriorityQueue</h3>
  * 
@@ -15,7 +15,7 @@ import dev.dsf.node.PriorityQueueNode;
  */
 public class LinkedHeapMaxPriorityQueue<T> extends AbstractHeapMaxPriorityQueue<T, LinkedMaxHeap<PriorityQueueNode<T>>> {
     /**
-     * Construct an empty heap.
+     * Construct an empty priority queue.
      */
     public LinkedHeapMaxPriorityQueue() {
         collection = new LinkedMaxHeap<>();

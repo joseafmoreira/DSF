@@ -42,15 +42,11 @@ public abstract class UnorderedListTesting extends ListTesting {
     }
 
     private static <T> UnorderedListADT<T> getInstance(Type type) {
-        switch (type) {
-            case ARRAY:
-                return new UnorderedArrayList<>(ARRAY_INITIAL_CAPACITY);
-            case LINKED:
-                return new UnorderedLinkedList<>();
-            case DLINKED:
-                return new UnorderedDoubleLinkedList<>();
-            default:
-                return null;
-        }
+        return switch (type) {
+            case ARRAY -> new UnorderedArrayList<>(ARRAY_INITIAL_CAPACITY);
+            case LINKED -> new UnorderedLinkedList<>();
+            case DLINKED -> new UnorderedDoubleLinkedList<>();
+            default -> null;
+        };
     }
 }

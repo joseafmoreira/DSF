@@ -36,15 +36,11 @@ public abstract class OrderedListTesting extends ListTesting {
     }
 
     private static <T> OrderedListADT<T> getInstance(Type type) {
-        switch (type) {
-            case ARRAY:
-                return new OrderedArrayList<>(ARRAY_INITIAL_CAPACITY);
-            case LINKED:
-                return new OrderedLinkedList<>();
-            case DLINKED:
-                return new OrderedDoubleLinkedList<>();
-            default:
-                return null;
-        }
+        return switch (type) {
+            case ARRAY -> new OrderedArrayList<>(ARRAY_INITIAL_CAPACITY);
+            case LINKED -> new OrderedLinkedList<>();
+            case DLINKED -> new OrderedDoubleLinkedList<>();
+            default -> null;
+        };
     }
 }

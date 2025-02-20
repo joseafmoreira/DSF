@@ -4,7 +4,7 @@ import dev.dsf.datastructure.binarytree.heap.min.LinkedMinHeap;
 import dev.dsf.node.PriorityQueueNode;
 
 /**
- * Min-heap implementation of the {@code PriorityQueueADT} interface.
+ * Linked min-heap implementation of the {@code PriorityQueueADT} interface.
  * 
  * <h3>LinkedHeapMinPriorityQueue</h3>
  * 
@@ -15,7 +15,7 @@ import dev.dsf.node.PriorityQueueNode;
  */
 public class LinkedHeapMinPriorityQueue<T> extends AbstractHeapMinPriorityQueue<T, LinkedMinHeap<PriorityQueueNode<T>>> {
     /**
-     * Construct an empty heap.
+     * Construct an empty priority queue.
      */
     public LinkedHeapMinPriorityQueue() {
         collection = new LinkedMinHeap<>();

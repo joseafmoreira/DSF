@@ -2,6 +2,7 @@ package dev.dsf.datastructure.priorityqueue.heap.min;
 
 import dev.dsf.abstractdatatype.MinHeapADT;
 import dev.dsf.datastructure.priorityqueue.heap.AbstractHeapPriorityQueue;
+import dev.dsf.exception.EmptyCollectionException;
 import dev.dsf.node.PriorityQueueNode;
 
 /**
@@ -18,6 +19,8 @@ import dev.dsf.node.PriorityQueueNode;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
+ * @see ArrayHeapMinPriorityQueue
+ * @see LinkedHeapMinPriorityQueue
  */
 public abstract class AbstractHeapMinPriorityQueue<T, C extends MinHeapADT<PriorityQueueNode<T>>>
         extends AbstractHeapPriorityQueue<T, C> {

@@ -19,6 +19,8 @@ import dev.dsf.node.PriorityQueueNode;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
+ * @see ArrayBinarySearchTreeMinPriorityQueue
+ * @see LinkedBinarySearchTreeMinPriorityQueue
  */
 public abstract class AbstractBinarySearchTreeMinPriorityQueue<T, C extends BinarySearchTreeADT<PriorityQueueNode<T>>>
         extends AbstractBinarySearchTreePriorityQueue<T, C> {

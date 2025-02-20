@@ -19,8 +19,11 @@ import dev.dsf.node.PriorityQueueNode;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
+ * @see OrderedArrayListMinPriorityQueue
+ * @see OrderedLinkedListMinPriorityQueue
+ * @see OrderedDoubleLinkedListMinPriorityQueue
  */
-public abstract class AbstractOrderedMinPriorityQueue<T, C extends OrderedListADT<PriorityQueueNode<T>>>
+public abstract class AbstractOrderedListMinPriorityQueue<T, C extends OrderedListADT<PriorityQueueNode<T>>>
         extends AbstractOrderedListPriorityQueue<T, C> {
     /**
      * {@inheritDoc}

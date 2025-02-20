@@ -19,6 +19,9 @@ import dev.dsf.node.PriorityQueueNode;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
+ * @see UnorderedArrayListMaxPriorityQueue
+ * @see UnorderedLinkedListMaxPriorityQueue
+ * @see UnorderedDoubleLinkedListMaxPriorityQueue
  */
 public abstract class AbstractUnorderedListMaxPriorityQueue<T, C extends UnorderedListADT<PriorityQueueNode<T>>>
         extends AbstractUnorderedListPriorityQueue<T, C> {
@@ -29,7 +32,7 @@ public abstract class AbstractUnorderedListMaxPriorityQueue<T, C extends Unorder
      */
     @Override
     public T first() {
-        return collection.remove(getMax()).getElement();
+        return collection.get(getMax()).getElement();
     }
 
     /**
@@ -39,7 +42,7 @@ public abstract class AbstractUnorderedListMaxPriorityQueue<T, C extends Unorder
      */
     @Override
     public T dequeue() {
-        return collection.get(getMax()).getElement();
+        return collection.remove(getMax()).getElement();
     }
 
     /**

@@ -19,6 +19,8 @@ import dev.dsf.node.PriorityQueueNode;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
+ * @see ArrayHeapMaxPriorityQueue
+ * @see LinkedHeapMaxPriorityQueue
  */
 public abstract class AbstractHeapMaxPriorityQueue<T, C extends MaxHeapADT<PriorityQueueNode<T>>>
         extends AbstractHeapPriorityQueue<T, C> {

@@ -102,7 +102,7 @@ public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements Bina
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @throws NullPointerException     {@inheritDoc}
      * @throws EmptyCollectionException {@inheritDoc}
      */
@@ -114,112 +114,89 @@ public class ArrayBinarySearchTree<T> extends ArrayBinaryTree<T> implements Bina
         if (isEmpty())
             throw new EmptyCollectionException("Binary tree is empty");
         Comparable<T> comparableTarget = (Comparable<T>) target;
-        if (comparableTarget.equals(list.get(0))) {
-            remove(0, replacement(0));
-            return true;
-        } else {
-            int parentIndex = 0;
-            int currentIndex = parentIndex * 2 +
-                    (comparableTarget.compareTo(list.get(parentIndex)) <= 0 ? 1 : 2);
-            while (currentIndex < list.size() && list.get(currentIndex) != null) {
-                if (comparableTarget.equals(list.get(currentIndex))) {
-                    remove(currentIndex, replacement(currentIndex));
-                    return true;
-                } else {
-                    parentIndex = currentIndex;
-                    currentIndex = parentIndex * 2 +
-                            (comparableTarget.compareTo(list.get(parentIndex)) <= 0 ? 1 : 2);
-                }
-            }
+        int currentIndex = 0;
+        while (currentIndex < list.size() && list.get(currentIndex) != null) {
+            int comparison = comparableTarget.compareTo(list.get(currentIndex));
+            if (comparison == 0) {
+                int replacementIndex = replacement(currentIndex);
+                remove(currentIndex, replacementIndex);
+                return true;
+            } else
+                currentIndex = currentIndex * 2 + (comparison < 0 ? 1 : 2);
         }
         return false;
     }
 
     /**
-     * Removes the element at the specified index in this binary search tree.
-     * <p>
-     * If the replacement index is -1, the element at the current index is set to
-     * null.
-     * Otherwise, the element at the current index is replaced with the element at
-     * the replacement index.
-     * If the replacement index is the right child of the current index, the
-     * replacement index is shifted.
-     * <p>
-     * The size of this binary tree is decremented by one.
+     * Removes the element at the specified index, adjusting the binary search tree
+     * structure.
      *
-     * @param currentIndex     the index of the element to be removed
-     * @param replacementIndex the index of the replacement element, or -1 if there
-     *                         is no replacement
+     * @param currentIndex     index of the element to remove
+     * @param replacementIndex index of the replacement node, or -1 if none
      */
     private void remove(int currentIndex, int replacementIndex) {
         if (replacementIndex == -1)
             list.set(currentIndex, null);
         else {
             list.set(currentIndex, list.get(replacementIndex));
-            if (replacementIndex == currentIndex * 2 + 2)
-                shift(replacementIndex);
+            shiftSubtree(replacementIndex);
         }
         size--;
     }
 
     /**
-     * Returns the the index of the node to replace the node in the specified index
-     * in this binary search tree.
-     * The replacement node is determined based on the following rules:
-     * - If the given node has no left child and no right child, the replacement
-     * node is null.
-     * - If the given node has a left child but no right child, the replacement node
-     * is the left child.
-     * - If the given node has no left child but a right child, the replacement node
-     * is the right child.
-     * - If the given node has both left and right children, the replacement node is
-     * the leftmost node in the right subtree.
-     * If the leftmost node in the right subtree is the right child of the given
-     * node, the replacement node is set to have the left child of the given node.
-     * Otherwise, the replacement node is set to have the right child of its parent,
-     * the right child of the given node, and the left child of the given node.
+     * Determines the index of the replacement node following binary search tree
+     * rules.
      *
-     * @param index the index of the node
-     * @return the index of the node to replace the node in the specified index, or
-     *         -1 if there's no replacement available
+     * @param index node index to replace
+     * @return replacement node index or -1 if none
      */
     private int replacement(int index) {
-        if (list.get(index * 2 + 1) == null && list.get(index * 2 + 2) == null)
+        int leftIndex = index * 2 + 1;
+        int rightIndex = index * 2 + 2;
+        if (getElement(leftIndex) == null && getElement(rightIndex) == null)
             return -1;
-        if (list.get(index * 2 + 1) != null && list.get(index * 2 + 2) == null)
-            return index * 2 + 1;
-        if (list.get(index * 2 + 1) == null && list.get(index * 2 + 2) != null)
-            return index * 2 + 2;
-        int parentIndex = index;
-        int currentIndex = index * 2 + 2;
-        while (list.get(currentIndex * 2 + 1) != null) {
-            parentIndex = currentIndex;
-            currentIndex = currentIndex * 2 + 1;
+        if (getElement(leftIndex) != null && getElement(rightIndex) == null)
+            return leftIndex;
+        if (getElement(leftIndex) == null && getElement(rightIndex) != null)
+            return rightIndex;
+        int parentIndex = rightIndex;
+        int successorIndex = rightIndex;
+        while (getElement(successorIndex * 2 + 1) != null) {
+            parentIndex = successorIndex;
+            successorIndex = successorIndex * 2 + 1;
         }
-        if (currentIndex != index * 2 + 2) {
-            list.set(parentIndex * 2 + 1, list.get(currentIndex * 2 + 2));
-            list.set(currentIndex * 2 + 1, list.get(index * 2 + 1));
-            list.set(currentIndex * 2 + 2, list.get(index * 2 + 2));
-        }
-        return currentIndex;
+        if (successorIndex != rightIndex)
+            list.set(parentIndex * 2 + 1, list.get(successorIndex * 2 + 2));
+        return successorIndex;
     }
 
     /**
-     * Shifts elements to maintain the binary search tree properties after a
-     * replacement.
-     * 
-     * @param index the index of the node to be shifted
+     * Shifts the subtree upwards from the specified index, preserving BST order.
+     *
+     * @param index index of the node to shift
      */
-    private void shift(int index) {
+    private void shiftSubtree(int index) {
         int leftIndex = index * 2 + 1;
         int rightIndex = index * 2 + 2;
-        if (leftIndex < list.size() && list.get(leftIndex) != null) {
+
+        if (getElement(leftIndex) != null) {
             list.set(index, list.get(leftIndex));
-            shift(leftIndex);
-        } else if (rightIndex < list.size() && list.get(rightIndex) != null) {
+            shiftSubtree(leftIndex);
+        } else if (getElement(rightIndex) != null) {
             list.set(index, list.get(rightIndex));
-            shift(rightIndex);
+            shiftSubtree(rightIndex);
         } else
             list.set(index, null);
+    }
+
+    /**
+     * Utility method to get an element safely.
+     *
+     * @param index the specified index of the element
+     * @return the element at the specified index or null if index is out of range
+     */
+    private T getElement(int index) {
+        return (index >= 0 && index < list.size()) ? list.get(index) : null;
     }
 }

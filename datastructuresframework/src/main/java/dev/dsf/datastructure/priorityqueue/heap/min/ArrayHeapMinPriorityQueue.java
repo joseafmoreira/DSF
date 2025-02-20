@@ -4,7 +4,7 @@ import dev.dsf.datastructure.binarytree.heap.min.ArrayMinHeap;
 import dev.dsf.node.PriorityQueueNode;
 
 /**
- * Min-heap implementation of the {@code PriorityQueueADT} interface.
+ * Array min-heap implementation of the {@code PriorityQueueADT} interface.
  * 
  * <h3>ArrayHeapMinPriorityQueue</h3>
  * 
@@ -15,7 +15,7 @@ import dev.dsf.node.PriorityQueueNode;
  */
 public class ArrayHeapMinPriorityQueue<T> extends AbstractHeapMinPriorityQueue<T, ArrayMinHeap<PriorityQueueNode<T>>> {
     /**
-     * Construct an empty heap.
+     * Construct an empty priority queue.
      */
     public ArrayHeapMinPriorityQueue() {
         collection = new ArrayMinHeap<>();

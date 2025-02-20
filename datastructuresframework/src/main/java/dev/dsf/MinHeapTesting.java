@@ -4,7 +4,7 @@ import dev.dsf.abstractdatatype.MinHeapADT;
 import dev.dsf.datastructure.binarytree.heap.min.ArrayMinHeap;
 import dev.dsf.datastructure.binarytree.heap.min.LinkedMinHeap;
 
-public class MinHeapTesting extends CollectionTesting {
+public abstract class MinHeapTesting extends CollectionTesting {
     private static final boolean isArray = true;
 
     public static void main(String[] args) {
