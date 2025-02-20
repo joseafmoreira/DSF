@@ -5,6 +5,19 @@ import java.util.Iterator;
 import dev.dsf.abstractdatatype.graph.GraphADT;
 import dev.dsf.abstractdatatype.list.UnorderedListADT;
 
+/**
+ * This class provides a skeletal implementation of the
+ * {@code GraphADT} interface, to minimize the effort
+ * required to implement this interface.
+ * <p>
+ * 
+ * <h3>AbstractGraph</h3>
+ * 
+ * @param <T> the type of element stored in this graph
+ * @since 1.0
+ * @version 1.0
+ * @author joseafmoreira
+ */
 public abstract class AbstractGraph<T> implements GraphADT<T> {
     /**
      * The list containing the vertices of this graph
