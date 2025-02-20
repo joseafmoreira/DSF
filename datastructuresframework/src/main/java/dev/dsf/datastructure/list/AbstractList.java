@@ -3,7 +3,7 @@ package dev.dsf.datastructure.list;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
-import dev.dsf.abstractdatatype.ListADT;
+import dev.dsf.abstractdatatype.list.ListADT;
 import dev.dsf.datastructure.collection.AbstractIterableCollection;
 
 /**

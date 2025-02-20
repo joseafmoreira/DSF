@@ -1,7 +1,7 @@
 package dev.dsf.datastructure.stack;
 
 import dev.dsf.abstractdatatype.StackADT;
-import dev.dsf.abstractdatatype.UnorderedListADT;
+import dev.dsf.abstractdatatype.list.UnorderedListADT;
 import dev.dsf.exception.EmptyCollectionException;
 
 /**

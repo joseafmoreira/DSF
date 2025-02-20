@@ -3,8 +3,8 @@ package dev.dsf.datastructure.priorityqueue;
 import java.util.Iterator;
 import java.util.StringJoiner;
 
-import dev.dsf.abstractdatatype.IterableCollectionADT;
 import dev.dsf.abstractdatatype.PriorityQueueADT;
+import dev.dsf.abstractdatatype.collection.IterableCollectionADT;
 import dev.dsf.datastructure.priorityqueue.binarysearchtree.AbstractBinarySearchTreePriorityQueue;
 import dev.dsf.datastructure.priorityqueue.heap.AbstractHeapPriorityQueue;
 import dev.dsf.datastructure.priorityqueue.orderedlist.AbstractOrderedListPriorityQueue;

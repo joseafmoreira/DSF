@@ -1,6 +1,6 @@
 package dev.dsf.datastructure.priorityqueue.heap.max;
 
-import dev.dsf.abstractdatatype.MaxHeapADT;
+import dev.dsf.abstractdatatype.binarytree.MaxHeapADT;
 import dev.dsf.datastructure.priorityqueue.heap.AbstractHeapPriorityQueue;
 import dev.dsf.exception.EmptyCollectionException;
 import dev.dsf.node.PriorityQueueNode;

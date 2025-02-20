@@ -1,6 +1,6 @@
 package dev.dsf;
 
-import dev.dsf.abstractdatatype.MaxHeapADT;
+import dev.dsf.abstractdatatype.binarytree.MaxHeapADT;
 import dev.dsf.datastructure.binarytree.heap.max.ArrayMaxHeap;
 import dev.dsf.datastructure.binarytree.heap.max.LinkedMaxHeap;
 

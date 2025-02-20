@@ -1,7 +1,7 @@
 package dev.dsf.datastructure.queue;
 
 import dev.dsf.abstractdatatype.QueueADT;
-import dev.dsf.abstractdatatype.UnorderedListADT;
+import dev.dsf.abstractdatatype.list.UnorderedListADT;
 import dev.dsf.exception.EmptyCollectionException;
 
 /**

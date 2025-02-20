@@ -2,9 +2,9 @@ package dev.dsf.datastructure.binarytree;
 
 import java.util.Iterator;
 
-import dev.dsf.abstractdatatype.BinaryTreeADT;
 import dev.dsf.abstractdatatype.QueueADT;
-import dev.dsf.abstractdatatype.UnorderedListADT;
+import dev.dsf.abstractdatatype.binarytree.BinaryTreeADT;
+import dev.dsf.abstractdatatype.list.UnorderedListADT;
 import dev.dsf.datastructure.binarytree.heap.ArrayHeap;
 import dev.dsf.datastructure.binarytree.search.ArrayBinarySearchTree;
 import dev.dsf.datastructure.collection.AbstractIterableCollection;

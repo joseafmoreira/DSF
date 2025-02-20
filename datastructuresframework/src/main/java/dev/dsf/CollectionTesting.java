@@ -1,6 +1,6 @@
 package dev.dsf;
 
-import dev.dsf.abstractdatatype.CollectionADT;
+import dev.dsf.abstractdatatype.collection.CollectionADT;
 
 public abstract class CollectionTesting {
     protected static void Class(CollectionADT collection) {

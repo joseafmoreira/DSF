@@ -1,6 +1,6 @@
 package dev.dsf.datastructure.priorityqueue.unorderedlist;
 
-import dev.dsf.abstractdatatype.UnorderedListADT;
+import dev.dsf.abstractdatatype.list.UnorderedListADT;
 import dev.dsf.datastructure.priorityqueue.AbstractPriorityQueue;
 import dev.dsf.datastructure.priorityqueue.unorderedlist.max.AbstractUnorderedListMaxPriorityQueue;
 import dev.dsf.datastructure.priorityqueue.unorderedlist.min.AbstractUnorderedListMinPriorityQueue;

@@ -1,6 +1,6 @@
 package dev.dsf;
 
-import dev.dsf.abstractdatatype.UnorderedListADT;
+import dev.dsf.abstractdatatype.list.UnorderedListADT;
 import dev.dsf.datastructure.list.unordered.UnorderedArrayList;
 import dev.dsf.datastructure.list.unordered.UnorderedDoubleLinkedList;
 import dev.dsf.datastructure.list.unordered.UnorderedLinkedList;

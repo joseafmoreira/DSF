@@ -1,5 +1,6 @@
-package dev.dsf.abstractdatatype;
+package dev.dsf.abstractdatatype.list;
 
+import dev.dsf.abstractdatatype.collection.IterableCollectionADT;
 import dev.dsf.exception.EmptyCollectionException;
 
 /**

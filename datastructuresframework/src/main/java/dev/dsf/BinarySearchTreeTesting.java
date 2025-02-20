@@ -1,6 +1,6 @@
 package dev.dsf;
 
-import dev.dsf.abstractdatatype.BinarySearchTreeADT;
+import dev.dsf.abstractdatatype.binarytree.BinarySearchTreeADT;
 import dev.dsf.datastructure.binarytree.search.ArrayBinarySearchTree;
 import dev.dsf.datastructure.binarytree.search.LinkedBinarySearchTree;
 

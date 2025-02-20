@@ -1,6 +1,6 @@
 package dev.dsf.datastructure.collection;
 
-import dev.dsf.abstractdatatype.CollectionADT;
+import dev.dsf.abstractdatatype.collection.CollectionADT;
 
 /**
  * This class provides a skeletal implementation of the {@code CollectionADT}

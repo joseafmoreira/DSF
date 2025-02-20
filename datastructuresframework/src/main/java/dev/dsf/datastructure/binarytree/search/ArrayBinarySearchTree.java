@@ -1,6 +1,6 @@
 package dev.dsf.datastructure.binarytree.search;
 
-import dev.dsf.abstractdatatype.BinarySearchTreeADT;
+import dev.dsf.abstractdatatype.binarytree.BinarySearchTreeADT;
 import dev.dsf.datastructure.binarytree.ArrayBinaryTree;
 import dev.dsf.exception.EmptyCollectionException;
 

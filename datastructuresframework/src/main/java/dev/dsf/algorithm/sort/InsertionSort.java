@@ -1,6 +1,6 @@
 package dev.dsf.algorithm.sort;
 
-import dev.dsf.abstractdatatype.ListADT;
+import dev.dsf.abstractdatatype.list.ListADT;
 
 /**
  * Insertion Sort is a simple sorting algorithm that works by iteratively

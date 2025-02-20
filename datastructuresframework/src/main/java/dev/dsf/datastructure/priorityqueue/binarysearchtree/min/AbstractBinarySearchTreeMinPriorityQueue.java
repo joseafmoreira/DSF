@@ -1,6 +1,6 @@
 package dev.dsf.datastructure.priorityqueue.binarysearchtree.min;
 
-import dev.dsf.abstractdatatype.BinarySearchTreeADT;
+import dev.dsf.abstractdatatype.binarytree.BinarySearchTreeADT;
 import dev.dsf.datastructure.priorityqueue.binarysearchtree.AbstractBinarySearchTreePriorityQueue;
 import dev.dsf.exception.EmptyCollectionException;
 import dev.dsf.node.PriorityQueueNode;

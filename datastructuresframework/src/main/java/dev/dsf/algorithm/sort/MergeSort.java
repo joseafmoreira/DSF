@@ -1,6 +1,6 @@
 package dev.dsf.algorithm.sort;
 
-import dev.dsf.abstractdatatype.ListADT;
+import dev.dsf.abstractdatatype.list.ListADT;
 
 /**
  * Merge Sort is a sorting algorithm that follows the divide-and-conquer

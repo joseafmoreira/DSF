@@ -1,7 +1,8 @@
-package dev.dsf.abstractdatatype;
+package dev.dsf.abstractdatatype.binarytree;
 
 import java.util.Iterator;
 
+import dev.dsf.abstractdatatype.collection.IterableCollectionADT;
 import dev.dsf.exception.EmptyCollectionException;
 
 /**

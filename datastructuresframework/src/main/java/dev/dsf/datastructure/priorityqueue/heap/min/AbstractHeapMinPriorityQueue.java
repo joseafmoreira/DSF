@@ -1,6 +1,6 @@
 package dev.dsf.datastructure.priorityqueue.heap.min;
 
-import dev.dsf.abstractdatatype.MinHeapADT;
+import dev.dsf.abstractdatatype.binarytree.MinHeapADT;
 import dev.dsf.datastructure.priorityqueue.heap.AbstractHeapPriorityQueue;
 import dev.dsf.exception.EmptyCollectionException;
 import dev.dsf.node.PriorityQueueNode;

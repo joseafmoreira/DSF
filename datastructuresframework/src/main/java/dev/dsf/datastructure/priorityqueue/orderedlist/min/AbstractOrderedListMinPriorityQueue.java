@@ -1,6 +1,6 @@
 package dev.dsf.datastructure.priorityqueue.orderedlist.min;
 
-import dev.dsf.abstractdatatype.OrderedListADT;
+import dev.dsf.abstractdatatype.list.OrderedListADT;
 import dev.dsf.datastructure.priorityqueue.orderedlist.AbstractOrderedListPriorityQueue;
 import dev.dsf.exception.EmptyCollectionException;
 import dev.dsf.node.PriorityQueueNode;

@@ -1,6 +1,6 @@
 package dev.dsf.algorithm.sort;
 
-import dev.dsf.abstractdatatype.ListADT;
+import dev.dsf.abstractdatatype.list.ListADT;
 
 /**
  * Selection Sort is a comparison-based sorting algorithm. It sorts an array by

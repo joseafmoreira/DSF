@@ -1,5 +1,6 @@
 package dev.dsf.abstractdatatype;
 
+import dev.dsf.abstractdatatype.collection.CollectionADT;
 import dev.dsf.exception.EmptyCollectionException;
 
 /**

@@ -3,7 +3,7 @@ package dev.dsf.datastructure.collection;
 import java.util.Iterator;
 import java.util.StringJoiner;
 
-import dev.dsf.abstractdatatype.IterableCollectionADT;
+import dev.dsf.abstractdatatype.collection.IterableCollectionADT;
 
 /**
  * This class provides a skeletal implementation of the

@@ -2,7 +2,7 @@ package dev.dsf.algorithm.search;
 
 import java.util.Iterator;
 
-import dev.dsf.abstractdatatype.ListADT;
+import dev.dsf.abstractdatatype.list.ListADT;
 
 /**
  * Linear, or sequential, search is a simple searching algorithm

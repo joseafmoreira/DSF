@@ -1,6 +1,6 @@
 package dev.dsf.algorithm.sort;
 
-import dev.dsf.abstractdatatype.ListADT;
+import dev.dsf.abstractdatatype.list.ListADT;
 
 /**
  * Quick Sort is a sorting algorithm based on the Divide and Conquer that picks

@@ -1,7 +1,10 @@
-package dev.dsf.abstractdatatype;
+package dev.dsf.abstractdatatype.collection;
 
 import java.util.Iterator;
-import java.util.function.IntFunction;
+
+import dev.dsf.abstractdatatype.binarytree.BinaryTreeADT;
+import dev.dsf.abstractdatatype.graph.GraphADT;
+import dev.dsf.abstractdatatype.list.ListADT;
 
 /**
  * An iterable collection is a collection that can be looped through using an
@@ -30,6 +33,9 @@ import java.util.function.IntFunction;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
+ * @see ListADT
+ * @see BinaryTreeADT
+ * @see GraphADT
  */
 public interface IterableCollectionADT<T> extends CollectionADT, Iterable<T> {
     /**
@@ -66,20 +72,6 @@ public interface IterableCollectionADT<T> extends CollectionADT, Iterable<T> {
     @SuppressWarnings("unchecked")
     default T[] toArray() {
         T[] array = (T[]) new Object[size()];
-        int i = 0;
-        for (T element : this)
-            array[i++] = element;
-        return array;
-    }
-
-    /**
-     * Returns an array containing all of the elements in this collection.
-     * 
-     * @param generator
-     * @return an array containing all of the elements in this collection
-     */
-    default T[] toArray(IntFunction<T[]> generator) {
-        T[] array = generator.apply(size());
         int i = 0;
         for (T element : this)
             array[i++] = element;

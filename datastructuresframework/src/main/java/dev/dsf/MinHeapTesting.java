@@ -1,6 +1,6 @@
 package dev.dsf;
 
-import dev.dsf.abstractdatatype.MinHeapADT;
+import dev.dsf.abstractdatatype.binarytree.MinHeapADT;
 import dev.dsf.datastructure.binarytree.heap.min.ArrayMinHeap;
 import dev.dsf.datastructure.binarytree.heap.min.LinkedMinHeap;
 

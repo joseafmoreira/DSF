@@ -1,6 +1,8 @@
-package dev.dsf.abstractdatatype;
+package dev.dsf.abstractdatatype.binarytree;
 
 import java.util.Iterator;
+
+import dev.dsf.abstractdatatype.collection.IterableCollectionADT;
 
 /**
  * A heap is a non-linear abstract data type that are complete binary trees

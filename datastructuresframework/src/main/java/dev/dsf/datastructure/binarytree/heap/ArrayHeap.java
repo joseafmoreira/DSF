@@ -1,6 +1,6 @@
 package dev.dsf.datastructure.binarytree.heap;
 
-import dev.dsf.abstractdatatype.HeapADT;
+import dev.dsf.abstractdatatype.binarytree.HeapADT;
 import dev.dsf.datastructure.binarytree.ArrayBinaryTree;
 import dev.dsf.datastructure.binarytree.heap.max.ArrayMaxHeap;
 import dev.dsf.datastructure.binarytree.heap.min.ArrayMinHeap;

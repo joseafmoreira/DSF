@@ -1,6 +1,6 @@
 package dev.dsf;
 
-import dev.dsf.abstractdatatype.OrderedListADT;
+import dev.dsf.abstractdatatype.list.OrderedListADT;
 import dev.dsf.datastructure.list.ordered.OrderedArrayList;
 import dev.dsf.datastructure.list.ordered.OrderedDoubleLinkedList;
 import dev.dsf.datastructure.list.ordered.OrderedLinkedList;

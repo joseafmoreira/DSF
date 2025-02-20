@@ -1,4 +1,8 @@
-package dev.dsf.abstractdatatype;
+package dev.dsf.abstractdatatype.collection;
+
+import dev.dsf.abstractdatatype.PriorityQueueADT;
+import dev.dsf.abstractdatatype.QueueADT;
+import dev.dsf.abstractdatatype.StackADT;
 
 /**
  * A collection is an abstract data type that is a grouping of items that can be
@@ -27,6 +31,9 @@ package dev.dsf.abstractdatatype;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
+ * @see StackADT
+ * @see QueueADT
+ * @see PriorityQueueADT
  * @see IterableCollectionADT
  */
 public interface CollectionADT {

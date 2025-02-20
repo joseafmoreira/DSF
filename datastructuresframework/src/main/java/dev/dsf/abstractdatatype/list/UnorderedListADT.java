@@ -1,7 +1,8 @@
-package dev.dsf.abstractdatatype;
+package dev.dsf.abstractdatatype.list;
 
 import java.util.NoSuchElementException;
 
+import dev.dsf.abstractdatatype.collection.IterableCollectionADT;
 import dev.dsf.exception.EmptyCollectionException;
 
 /**

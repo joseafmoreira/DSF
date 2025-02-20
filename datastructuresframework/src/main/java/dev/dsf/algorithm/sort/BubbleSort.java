@@ -1,6 +1,6 @@
 package dev.dsf.algorithm.sort;
 
-import dev.dsf.abstractdatatype.ListADT;
+import dev.dsf.abstractdatatype.list.ListADT;
 
 /**
  * Bubble Sort is the simplest sorting algorithm that works by repeatedly

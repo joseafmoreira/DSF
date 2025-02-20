@@ -1,6 +1,6 @@
 package dev.dsf.datastructure.list.unordered;
 
-import dev.dsf.abstractdatatype.UnorderedListADT;
+import dev.dsf.abstractdatatype.list.UnorderedListADT;
 import dev.dsf.algorithm.sort.MergeSort;
 import dev.dsf.datastructure.list.LinkedList;
 import dev.dsf.exception.EmptyCollectionException;

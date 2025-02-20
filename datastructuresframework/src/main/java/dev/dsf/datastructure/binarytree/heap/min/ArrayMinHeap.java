@@ -1,6 +1,6 @@
 package dev.dsf.datastructure.binarytree.heap.min;
 
-import dev.dsf.abstractdatatype.MinHeapADT;
+import dev.dsf.abstractdatatype.binarytree.MinHeapADT;
 import dev.dsf.datastructure.binarytree.heap.ArrayHeap;
 import dev.dsf.exception.EmptyCollectionException;
 

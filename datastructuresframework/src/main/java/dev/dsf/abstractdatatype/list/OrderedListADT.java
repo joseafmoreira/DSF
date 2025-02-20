@@ -1,4 +1,6 @@
-package dev.dsf.abstractdatatype;
+package dev.dsf.abstractdatatype.list;
+
+import dev.dsf.abstractdatatype.collection.IterableCollectionADT;
 
 /**
  * An ordered list is a linear abstract data type that allows the addition in
