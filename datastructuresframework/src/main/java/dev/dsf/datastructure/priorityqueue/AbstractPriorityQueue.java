@@ -3,8 +3,9 @@ package dev.dsf.datastructure.priorityqueue;
 import java.util.Iterator;
 import java.util.StringJoiner;
 
-import dev.dsf.abstractdatatype.PriorityQueueADT;
 import dev.dsf.abstractdatatype.collection.IterableCollectionADT;
+import dev.dsf.abstractdatatype.priorityqueue.PriorityQueueADT;
+import dev.dsf.abstractdatatype.priorityqueue.HighPriorityFirst;
 import dev.dsf.datastructure.list.ordered.OrderedArrayList;
 import dev.dsf.datastructure.priorityqueue.binarysearchtree.AbstractBinarySearchTreePriorityQueue;
 import dev.dsf.datastructure.priorityqueue.heap.AbstractHeapPriorityQueue;
@@ -103,5 +104,11 @@ public abstract class AbstractPriorityQueue<T, C extends IterableCollectionADT<P
      * @param message the specified message to store the string representation of
      *                this priority queue
      */
-    protected abstract void toStringGenerator(OrderedArrayList<PriorityQueueNode<T>> list, StringJoiner message);
+    protected void toStringGenerator(OrderedArrayList<PriorityQueueNode<T>> list, StringJoiner message) {
+        boolean isReversed = (this instanceof HighPriorityFirst);
+        for (int i = 0; i < size(); i++) {
+            int index = isReversed ? size() - 1 - i : i;
+            message.add(list.get(index).getElement() == null ? "null" : list.get(index).toString());
+        }
+    }
 }

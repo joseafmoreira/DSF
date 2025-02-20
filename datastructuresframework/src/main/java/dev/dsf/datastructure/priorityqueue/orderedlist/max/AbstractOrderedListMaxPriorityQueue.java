@@ -1,9 +1,7 @@
 package dev.dsf.datastructure.priorityqueue.orderedlist.max;
 
-import java.util.StringJoiner;
-
 import dev.dsf.abstractdatatype.list.OrderedListADT;
-import dev.dsf.datastructure.list.ordered.OrderedArrayList;
+import dev.dsf.abstractdatatype.priorityqueue.HighPriorityFirst;
 import dev.dsf.datastructure.priorityqueue.orderedlist.AbstractOrderedListPriorityQueue;
 import dev.dsf.exception.EmptyCollectionException;
 import dev.dsf.node.PriorityQueueNode;
@@ -27,7 +25,7 @@ import dev.dsf.node.PriorityQueueNode;
  * @see OrderedDoubleLinkedListMaxPriorityQueue
  */
 public abstract class AbstractOrderedListMaxPriorityQueue<T, C extends OrderedListADT<PriorityQueueNode<T>>>
-        extends AbstractOrderedListPriorityQueue<T, C> {
+        extends AbstractOrderedListPriorityQueue<T, C> implements HighPriorityFirst {
     /**
      * {@inheritDoc}
      * 
@@ -46,14 +44,5 @@ public abstract class AbstractOrderedListMaxPriorityQueue<T, C extends OrderedLi
     @Override
     public T dequeue() {
         return collection.removeLast().getElement();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void toStringGenerator(OrderedArrayList<PriorityQueueNode<T>> list, StringJoiner message) {
-        for (int i = size() - 1; i >= 0; i--)
-            message.add(list.get(i).getElement() == null ? "null" : list.get(i).toString());
     }
 }

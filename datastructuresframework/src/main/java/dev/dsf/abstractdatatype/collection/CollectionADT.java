@@ -1,8 +1,8 @@
 package dev.dsf.abstractdatatype.collection;
 
-import dev.dsf.abstractdatatype.PriorityQueueADT;
 import dev.dsf.abstractdatatype.QueueADT;
 import dev.dsf.abstractdatatype.StackADT;
+import dev.dsf.abstractdatatype.priorityqueue.PriorityQueueADT;
 
 /**
  * A collection is an abstract data type that is a grouping of items that can be

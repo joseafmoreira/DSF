@@ -1,9 +1,7 @@
 package dev.dsf.datastructure.priorityqueue.heap.max;
 
-import java.util.StringJoiner;
-
 import dev.dsf.abstractdatatype.binarytree.MaxHeapADT;
-import dev.dsf.datastructure.list.ordered.OrderedArrayList;
+import dev.dsf.abstractdatatype.priorityqueue.HighPriorityFirst;
 import dev.dsf.datastructure.priorityqueue.heap.AbstractHeapPriorityQueue;
 import dev.dsf.exception.EmptyCollectionException;
 import dev.dsf.node.PriorityQueueNode;
@@ -26,7 +24,7 @@ import dev.dsf.node.PriorityQueueNode;
  * @see LinkedHeapMaxPriorityQueue
  */
 public abstract class AbstractHeapMaxPriorityQueue<T, C extends MaxHeapADT<PriorityQueueNode<T>>>
-        extends AbstractHeapPriorityQueue<T, C> {
+        extends AbstractHeapPriorityQueue<T, C> implements HighPriorityFirst {
     /**
      * {@inheritDoc}
      * 
@@ -45,14 +43,5 @@ public abstract class AbstractHeapMaxPriorityQueue<T, C extends MaxHeapADT<Prior
     @Override
     public T dequeue() {
         return collection.removeMax().getElement();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void toStringGenerator(OrderedArrayList<PriorityQueueNode<T>> list, StringJoiner message) {
-        for (int i = size() - 1; i >= 0; i--)
-            message.add(list.get(i).getElement() == null ? "null" : list.get(i).toString());
     }
 }

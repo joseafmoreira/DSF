@@ -1,4 +1,4 @@
-package dev.dsf.abstractdatatype;
+package dev.dsf.abstractdatatype.priorityqueue;
 
 import dev.dsf.abstractdatatype.collection.CollectionADT;
 import dev.dsf.exception.EmptyCollectionException;

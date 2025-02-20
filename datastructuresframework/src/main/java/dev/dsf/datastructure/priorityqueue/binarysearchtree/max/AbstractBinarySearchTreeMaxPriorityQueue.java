@@ -1,9 +1,7 @@
 package dev.dsf.datastructure.priorityqueue.binarysearchtree.max;
 
-import java.util.StringJoiner;
-
 import dev.dsf.abstractdatatype.binarytree.BinarySearchTreeADT;
-import dev.dsf.datastructure.list.ordered.OrderedArrayList;
+import dev.dsf.abstractdatatype.priorityqueue.HighPriorityFirst;
 import dev.dsf.datastructure.priorityqueue.binarysearchtree.AbstractBinarySearchTreePriorityQueue;
 import dev.dsf.exception.EmptyCollectionException;
 import dev.dsf.node.PriorityQueueNode;
@@ -26,7 +24,7 @@ import dev.dsf.node.PriorityQueueNode;
  * @see LinkedBinarySearchTreeMaxPriorityQueue
  */
 public abstract class AbstractBinarySearchTreeMaxPriorityQueue<T, C extends BinarySearchTreeADT<PriorityQueueNode<T>>>
-        extends AbstractBinarySearchTreePriorityQueue<T, C> {
+        extends AbstractBinarySearchTreePriorityQueue<T, C> implements HighPriorityFirst {
     /**
      * {@inheritDoc}
      * 
@@ -45,14 +43,5 @@ public abstract class AbstractBinarySearchTreeMaxPriorityQueue<T, C extends Bina
     @Override
     public T dequeue() {
         return collection.removeMax().getElement();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void toStringGenerator(OrderedArrayList<PriorityQueueNode<T>> list, StringJoiner message) {
-        for (int i = size() - 1; i >= 0; i--)
-            message.add(list.get(i).getElement() == null ? "null" : list.get(i).toString());
     }
 }
