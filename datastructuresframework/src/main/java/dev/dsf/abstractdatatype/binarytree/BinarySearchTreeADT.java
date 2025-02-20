@@ -125,9 +125,8 @@ public interface BinarySearchTreeADT<T> extends BinaryTreeADT<T> {
     }
 
     /**
-     * Returns an iterator over the element of this binary search tree.
+     * {@inhertiDoc}
      * 
-     * @return an iterator over the element of this binary search tree
      * @see IterableCollectionADT#iterator()
      */
     @Override

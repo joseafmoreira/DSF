@@ -1,17 +1,16 @@
 package dev.dsf.abstractdatatype.graph;
 
 /**
- * A network is a graph that, like the graph, consists of vertexes and edges or
- * connections between those vertexes but the edges have associated weights.
+ * A weighted graph is a graph that has weights associated with it's edges.
  * <p>
- * There will be two base types of network implemented:
+ * There will be two base types of weighted graph implemented:
  * <p>
  * <ul>
  * <li>Undirected</li>
  * <li>Directed</li>
  * </ul>
  * 
- * The common operations for a network include:
+ * The common operations for a weighted graph include:
  * <p>
  * <ul>
  * <li>{@link #addEdge(Object, Object, double)}: Adds an edge between two
@@ -27,12 +26,12 @@ package dev.dsf.abstractdatatype.graph;
  * 
  * <h3>NetworkADT</h3>
  * 
- * @param <T> the type of elements in this network
+ * @param <T> the type of elements in this graph
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
  */
-public interface NetworkADT<T> extends GraphADT<T> {
+public interface WeightedGraphADT<T> extends GraphADT<T> {
     /**
      * Adds an edge between two vertexes with a specified weight.
      * 
@@ -44,7 +43,10 @@ public interface NetworkADT<T> extends GraphADT<T> {
 
     /**
      * {@inheritDoc}
+     * 
+     * @see GraphADT#addEdge(Object, Object)
      */
+    @Override
     default void addEdge(T vertex1, T vertex2) {
         addEdge(vertex1, vertex2, 0);
     }

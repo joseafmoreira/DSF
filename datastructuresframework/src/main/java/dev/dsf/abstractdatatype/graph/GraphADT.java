@@ -1,6 +1,7 @@
 package dev.dsf.abstractdatatype.graph;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import dev.dsf.abstractdatatype.collection.IterableCollectionADT;
 
@@ -52,13 +53,14 @@ import dev.dsf.abstractdatatype.collection.IterableCollectionADT;
  * @since 1.0
  * @version 1.0
  * @author joseafmoreira
- * @see NetworkADT
+ * @see WeightedGraphADT
  */
 public interface GraphADT<T> extends IterableCollectionADT<T> {
     /**
      * Adds a vertex to this graph.
      * 
      * @param vertex the vertex to be added
+     * @throws NullPointerException if the specified vertex is null
      */
     void addVertex(T vertex);
 
@@ -66,6 +68,7 @@ public interface GraphADT<T> extends IterableCollectionADT<T> {
      * Removes a vertex from this graph.
      * 
      * @param target the target to remove
+     * @throws NullPointerException if the specified target is null
      */
     void removeVertex(T target);
 
@@ -74,6 +77,9 @@ public interface GraphADT<T> extends IterableCollectionADT<T> {
      * 
      * @param vertex1 the first vertex
      * @param vertex2 the second vertex
+     * @throws NullPointerException   if the specified vertices are null
+     * @throws NoSuchElementException if one or both of the specified vertices isn't
+     *                                in this graph
      */
     void addEdge(T vertex1, T vertex2);
 
@@ -82,6 +88,9 @@ public interface GraphADT<T> extends IterableCollectionADT<T> {
      * 
      * @param vertex1 the first vertex
      * @param vertex2 the second vertex
+     * @throws NullPointerException   if the specified vertices are null
+     * @throws NoSuchElementException if one or both of the specified vertices isn't
+     *                                in this graph
      */
     void removeEdge(T vertex1, T vertex2);
 
@@ -98,6 +107,7 @@ public interface GraphADT<T> extends IterableCollectionADT<T> {
      * 
      * @param startVertex the start vertex
      * @return an iterator over the elements in this graph
+     * @throws NullPointerException if the specified vertex is null
      */
     Iterator<T> iteratorBFS(T startVertex);
 
@@ -107,6 +117,7 @@ public interface GraphADT<T> extends IterableCollectionADT<T> {
      * 
      * @param startVertex the start vertex
      * @return an iterator over the elements in this graph
+     * @throws NullPointerException if the specified vertex is null
      */
     Iterator<T> iteratorDFS(T startVertex);
 
@@ -118,6 +129,7 @@ public interface GraphADT<T> extends IterableCollectionADT<T> {
      * @param targetVertex the target vertex
      * @return an iterator over the elements that constitute the shortest path
      *         between two vertexes including those two vertexes
+     * @throws NullPointerException if the specified vertices are null
      */
     Iterator<T> iteratorShortestPath(T startVertex, T targetVertex);
 
@@ -129,6 +141,23 @@ public interface GraphADT<T> extends IterableCollectionADT<T> {
      * @param targetVertex the target vertex
      * @return an iterator over the elements that constitute the longest path
      *         between two vertexes including those two vertexes
+     * @throws NullPointerException if the specified vertices are null
      */
     Iterator<T> iteratorLongestPath(T startVertex, T targetVertex);
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @throws NullPointerException if the specified is null
+     * @see IterableCollectionADT#contains(Object)
+     */
+    @Override
+    default boolean contains(T target) {
+        if (target == null)
+            throw new NullPointerException("Target is null");
+        for (T element : this)
+            if (element.equals(target))
+                return true;
+        return false;
+    }
 }
