@@ -24,6 +24,9 @@ public abstract class MaxPriorityQueueTesting extends PriorityQueueTesting {
         System.out.println("Root element: " + priorityQueue.first());
         System.out.println("Removed element: " + priorityQueue.dequeue());
         Collection(priorityQueue);
+
+        priorityQueue.clear();
+        Collection(priorityQueue);
     }
 
     private static <T> PriorityQueueADT<T> getInstance(Type type) {
