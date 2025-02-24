@@ -1,9 +1,12 @@
 package dev.dsf.datastructure.graph;
 
 import java.util.Iterator;
+import java.util.StringJoiner;
 
+import dev.dsf.abstractdatatype.collection.IterableCollectionADT;
 import dev.dsf.abstractdatatype.graph.GraphADT;
 import dev.dsf.abstractdatatype.list.UnorderedListADT;
+import dev.dsf.datastructure.list.ordered.OrderedArrayList;
 
 /**
  * This class provides a skeletal implementation of the
@@ -70,5 +73,42 @@ public abstract class AbstractGraph<T> implements GraphADT<T> {
     @Override
     public int size() {
         return list.size();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || !(obj instanceof IterableCollectionADT))
+            return false;
+        Iterator<T> it1 = list.iterator();
+        Iterator<T> it2 = ((IterableCollectionADT<T>) obj).iterator();
+        while (it1.hasNext() && it2.hasNext()) {
+            T element1 = it1.next();
+            T element2 = it2.next();
+            if (element1 == null ? element2 != null : !element1.equals(element2))
+                return false;
+        }
+        return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int hashCode() {
+        return list.hashCode();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return list.toString();
     }
 }
