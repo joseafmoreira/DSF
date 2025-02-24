@@ -1,12 +1,11 @@
 package dev.dsf.datastructure.graph;
 
 import java.util.Iterator;
-import java.util.StringJoiner;
 
 import dev.dsf.abstractdatatype.collection.IterableCollectionADT;
 import dev.dsf.abstractdatatype.graph.GraphADT;
 import dev.dsf.abstractdatatype.list.UnorderedListADT;
-import dev.dsf.datastructure.list.ordered.OrderedArrayList;
+import dev.dsf.datastructure.list.unordered.UnorderedDoubleLinkedList;
 
 /**
  * This class provides a skeletal implementation of the
@@ -28,6 +27,13 @@ public abstract class AbstractGraph<T> implements GraphADT<T> {
     protected UnorderedListADT<T> list;
 
     /**
+     * Constructs an empty graph
+     */
+    protected AbstractGraph() {
+        list = new UnorderedDoubleLinkedList<>();
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @throws NullPointerException {@inheritDoc}
@@ -37,18 +43,6 @@ public abstract class AbstractGraph<T> implements GraphADT<T> {
         if (vertex == null)
             throw new NullPointerException("Vertex is null");
         list.addLast(vertex);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @throws NullPointerException {@inheritDoc}
-     */
-    @Override
-    public void removeVertex(T target) {
-        if (target == null)
-            throw new NullPointerException("Target is null");
-        list.remove(target);
     }
 
     /**
