@@ -68,7 +68,8 @@ public interface GraphADT<T> extends IterableCollectionADT<T> {
      * Removes a vertex from this graph.
      * 
      * @param target the target to remove
-     * @throws NullPointerException if the specified target is null
+     * @throws NullPointerException   if the specified target is null
+     * @throws NoSuchElementException if the specified target isn't in this graph
      */
     void removeVertex(T target);
 
