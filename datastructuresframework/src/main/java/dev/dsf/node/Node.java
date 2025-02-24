@@ -35,6 +35,7 @@ package dev.dsf.node;
  * @see LinearNode
  * @see BinaryTreeNode
  * @see PriorityQueueNode
+ * @see GraphNode
  */
 public abstract class Node<T> {
     /**

@@ -41,6 +41,7 @@ public abstract class AbstractMatrixGraph<T> extends AbstractGraph<T> {
         while (adjacencyMatrix.size() < list.size())
             adjacencyMatrix.addLast(new UnorderedArrayList<>());
         for (int i = 0; i < size(); i++)
-            adjacencyMatrix.get(size() - 1).set(i, Double.POSITIVE_INFINITY);
+            while (adjacencyMatrix.get(i).size() < size())
+                adjacencyMatrix.get(i).addLast(Double.POSITIVE_INFINITY);
     }
 }
