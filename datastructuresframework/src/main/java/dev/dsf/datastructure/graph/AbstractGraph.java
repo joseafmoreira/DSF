@@ -5,6 +5,7 @@ import java.util.Iterator;
 import dev.dsf.abstractdatatype.collection.IterableCollectionADT;
 import dev.dsf.abstractdatatype.graph.GraphADT;
 import dev.dsf.abstractdatatype.list.UnorderedListADT;
+import dev.dsf.datastructure.list.unordered.UnorderedArrayList;
 import dev.dsf.datastructure.list.unordered.UnorderedDoubleLinkedList;
 
 /**
@@ -43,6 +44,24 @@ public abstract class AbstractGraph<T> implements GraphADT<T> {
         if (vertex == null)
             throw new NullPointerException("Vertex is null");
         list.addLast(vertex);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isConnected() {
+        for (T vertex : list) {
+            Iterator<T> it = iteratorBFS(vertex);
+            int itSize = 0;
+            while (it.hasNext()) {
+                it.next();
+                itSize++;
+            }
+            if (itSize != size())
+                return false;
+        }
+        return true;
     }
 
     /**
