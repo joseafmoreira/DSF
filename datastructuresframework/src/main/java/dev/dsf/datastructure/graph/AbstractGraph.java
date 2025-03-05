@@ -5,7 +5,6 @@ import java.util.Iterator;
 import dev.dsf.abstractdatatype.collection.IterableCollectionADT;
 import dev.dsf.abstractdatatype.graph.GraphADT;
 import dev.dsf.abstractdatatype.list.UnorderedListADT;
-import dev.dsf.datastructure.list.unordered.UnorderedArrayList;
 import dev.dsf.datastructure.list.unordered.UnorderedDoubleLinkedList;
 
 /**
